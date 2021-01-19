@@ -1,0 +1,68 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+# Print bad files
+def printBad(bad):
+    '''Print the bad file given in args'''
+    for b in bad:
+        print ' ** %s can not be compile: file is incorrect or does not exist.' % b
+
+# Save the byte code
+def saveByteCode(initialname,byte,folder='bin'):
+    '''Save the byte code given'''
+    path = os.path.splitext(initialname)[0].split('/')
+    name = path[len(path)-1]+'.cvsl'
+    outfile = open(folder+name, 'w')
+    outfile.write(comp)
+    outfile.close()
+    print '  * Output write to '+folder+name
+
+if __name__ == '__main__':
+    import sys, os
+    from vslcomp.vslcomp_message import *
+    from optparse import OptionParser
+
+    parser = OptionParser(usage="usage: %prog [options] <filename> [args]", version="%prog 0.1")
+    parser.add_option('-l','--level', type='int', dest='level', default=3, help='Set the optimize level [0-3]')
+    parser.add_option('-o','--output', type='string', dest='output', default='bin'+os.path.sep, help='Set the output directory')
+    (options, args) = parser.parse_args()
+
+    if not options.output.endswith(os.path.sep): options.output += os.path.sep
+
+    if len(args)<1 or args[0]=='*.vsl': 
+        print '  * Nothing to compil'
+        sys.exit(NOTHING_COMPILE_ERROR_CODE)
+
+    if '-l' in sys.argv:    # If option found
+        print '  * Optimize set to %d.' % options.level
+
+    # bad file given in parameter
+    bad = [name for name in args if not name.endswith('.vsl') or not os.path.exists(name)]
+    # Good file !!!
+    good = [name for name in args if name not in bad]
+
+    # Display the bad file given
+    printBad(bad)
+
+    if len(good)>0 :
+        from vslcomp.vslcomp_compiler import compile
+        from vslcomp.vslcomp_optimize import optimize
+        from vslcomp.vslcomp_parser import getAllPath
+
+        for i in range(0,len(good)):
+            # Compile the file
+            comp = compile(good[i])
+            if not isinstance(comp,int):
+                if os.path.isabs(options.output): binary = options.output
+                else: binary = getAllPath(good[i])+options.output
+                # Create output folder if he doesn't exist
+                if (not os.path.exists(binary) or not os.path.isdir(binary)): os.mkdir(binary)
+                # Optimize the byte code
+                comp = optimize(comp,options.level)
+                # Save the byte code
+                saveByteCode(good[i],comp,binary)
+            else: sys.exit(comp)
+        sys.exit(EXIT_SUCCESS)
+    else:
+        print ' * Nothing to compil'
+        sys.exit(NOTHING_COMPILE_ERROR_CODE)
