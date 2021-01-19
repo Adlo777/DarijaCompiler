@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-import vslcomp_parser as vslparse
+import Parser as vslparse
+
 
 '''
-    In this part, the optimize algorythms are not the best, but they work.
-    If we want to speed up the compilation, we probably need to redoo this.
-
-    Anthony Mougin <anthony.mougin@he-arc.ch>
-    LANCO 2008-2009
+  Darija Compiler Project 
+  ECOLE NATIONALE DES SCIENCES APPLIQUEES
+  WIAM-IBTISSAM-ADMEO
 '''
+
 
 # Optimize a byte code (supress double-label)
 def optimizeLabel():

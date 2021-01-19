@@ -2,10 +2,9 @@
 #-*- coding:utf-8 -*-
 
 '''
-    Parser of the program (yacc part of PLY)
-
-    Anthony Mougin <anthony.mougin@he-arc.ch>
-    LANCO 2008-2009
+  Darija Compiler Project 
+  ECOLE NATIONALE DES SCIENCES APPLIQUEES
+  WIAM-IBTISSAM-ADMEO
 '''
 
 EXIT_SUCCESS = 0        # Exit succes

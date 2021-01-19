@@ -2,13 +2,9 @@
 #-*- coding:utf-8 -*-
 
 '''
-    Abstract Syntax Tree of the program. The list of class
-    who compose the program. All the class have method for
-    display the ascci graph of the program. The final compiler
-    don't need this method.
-
-    Anthony Mougin <anthony.mougin@he-arc.ch>
-    LANCO 2008-2009
+  Darija Compiler Project 
+  ECOLE NATIONALE DES SCIENCES APPLIQUEES
+  WIAM-IBTISSAM-ADMEO
 '''
 
 #####################################

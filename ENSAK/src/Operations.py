@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-'''
-    Operations op code. Needed by the vslcomp_compiler.py
 
-    Anthony Mougin <anthony.mougin@he-arc.ch>
-    LANCO 2008-2009
+'''
+  Darija Compiler Project 
+  ECOLE NATIONALE DES SCIENCES APPLIQUEES
+  WIAM-IBTISSAM-ADMEO
 '''
 
 operations = {

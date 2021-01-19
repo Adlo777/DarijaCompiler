@@ -9,7 +9,7 @@
 '''
 
 import ply.lex as lex
-from vslcomp_message import *
+from Message import *
 
 ########################
 #    Reserved object   #

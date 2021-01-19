@@ -10,12 +10,12 @@
 '''
 
 import time
-import vslcomp_ast
-from vslcomp_ast import addToClass
-from vslcomp_message import *
-import vslcomp_lex as vsllex
-import vslcomp_parser as vslparse
-from vslcomp_operations import *
+import AST
+from AST import addToClass
+from Message import *
+import Lex as vsllex
+import Parser as vslparse
+from Operations import *
 
 #####################################
 #         INITIALISATION            #

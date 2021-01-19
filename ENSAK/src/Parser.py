@@ -6,11 +6,11 @@
 '''
 
 import ply.lex as lex
-import vslcomp_lex as vsllex
-from vslcomp_lex import tokens
+import Lex as vsllex
+from Lex import tokens
 import ply.yacc as yacc
 from message import *
-from vslcomp_ast import *
+from AST import *
 
 # Initialyse 
 def init():
