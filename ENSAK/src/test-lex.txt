@@ -1,0 +1,72 @@
+# LITERALS
+.
+(
+)
+{
+}
+,
+!
+[
+]
+
+# OP_COMP
+==
+!=
+
+# OP_ASSIGN
+=
+*=
++=
+-=
+/=
+%=
+
+# NUMBER
+1
+1.1
+-1
+-1.1
+1e10
+1.23e10
+1e-2
+1.23e-4
+
+# UNARY
+++
+--
+
+# OP_MUL
+*
+/
+%
+
+# OP_ADD
++
+-
+
+# OP_RELA
+<
+<=
+>
+>=
+
+# AND_LOGIC
+&&
+
+# OR_LOGIC
+||
+
+# IDENTIFIER
+toto
+titi1
+a5
+b
+
+# RESERVED WORDS
+if
+else
+while
+until
+for
+true
+false

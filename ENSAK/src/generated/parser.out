@@ -1,0 +1,2111 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     program -> nl statement_list
+Rule 3     statement_list -> statement
+Rule 4     statement_list -> statement nl
+Rule 5     statement_list -> statement nl statement_list
+Rule 6     statement -> if_stmt
+Rule 7     statement -> for_stmt
+Rule 8     statement -> foreach_stmt
+Rule 9     statement -> while_stmt
+Rule 10    statement -> until_stmt
+Rule 11    statement -> expression_stmt
+Rule 12    if_stmt -> IF expression block
+Rule 13    if_stmt -> IF expression block ELSE block
+Rule 14    if_stmt -> IF expression block ELSE if_stmt
+Rule 15    for_stmt -> FOR expression , expression , expression block
+Rule 16    foreach_stmt -> id [ nl statement_list ]
+Rule 17    while_stmt -> WHILE expression block
+Rule 18    until_stmt -> UNTIL expression block
+Rule 19    expression_stmt -> expression
+Rule 20    block -> { nl statement_list }
+Rule 21    nl -> NEWLINE
+Rule 22    nl -> nl NEWLINE
+Rule 23    expression -> expression OP_UNARY
+Rule 24    expression -> ! expression
+Rule 25    expression -> expression OP_MUL expression
+Rule 26    expression -> expression OP_ADD expression
+Rule 27    expression -> expression OP_RELA expression
+Rule 28    expression -> expression OP_COMP expression
+Rule 29    expression -> expression AND_LOGIC expression
+Rule 30    expression -> expression OR_LOGIC expression
+Rule 31    expression -> expression OP_ASSIGN expression
+Rule 32    expression -> ( expression )
+Rule 33    expression -> NUMBER
+Rule 34    expression -> TRUE
+Rule 35    expression -> FALSE
+Rule 36    expression -> id
+Rule 37    expression -> call
+Rule 38    id -> IDENTIFIER
+Rule 39    id -> IDENTIFIER . id
+Rule 40    call -> id ( )
+Rule 41    call -> id ( parameters )
+Rule 42    parameters -> expression
+Rule 43    parameters -> expression , parameters
+
+Terminals, with rules where they appear
+
+!                    : 24
+(                    : 32 40 41
+)                    : 32 40 41
+,                    : 15 15 43
+.                    : 39
+AND_LOGIC            : 29
+ELSE                 : 13 14
+FALSE                : 35
+FOR                  : 15
+IDENTIFIER           : 38 39
+IF                   : 12 13 14
+NEWLINE              : 21 22
+NUMBER               : 33
+OP_ADD               : 26
+OP_ASSIGN            : 31
+OP_COMP              : 28
+OP_MUL               : 25
+OP_RELA              : 27
+OP_UNARY             : 23
+OR_LOGIC             : 30
+TRUE                 : 34
+UNTIL                : 18
+WHILE                : 17
+[                    : 16
+]                    : 16
+error                : 
+{                    : 20
+}                    : 20
+
+Nonterminals, with rules where they appear
+
+block                : 12 13 13 14 15 17 18
+call                 : 37
+expression           : 12 13 14 15 15 15 17 18 19 23 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 42 43
+expression_stmt      : 11
+for_stmt             : 7
+foreach_stmt         : 8
+id                   : 16 36 39 40 41
+if_stmt              : 6 14
+nl                   : 2 4 5 16 20 22
+parameters           : 41 43
+program              : 0
+statement            : 3 4 5
+statement_list       : 1 2 5 16 20
+until_stmt           : 10
+while_stmt           : 9
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) program -> . nl statement_list
+    (3) statement_list -> . statement
+    (4) statement_list -> . statement nl
+    (5) statement_list -> . statement nl statement_list
+    (21) nl -> . NEWLINE
+    (22) nl -> . nl NEWLINE
+    (6) statement -> . if_stmt
+    (7) statement -> . for_stmt
+    (8) statement -> . foreach_stmt
+    (9) statement -> . while_stmt
+    (10) statement -> . until_stmt
+    (11) statement -> . expression_stmt
+    (12) if_stmt -> . IF expression block
+    (13) if_stmt -> . IF expression block ELSE block
+    (14) if_stmt -> . IF expression block ELSE if_stmt
+    (15) for_stmt -> . FOR expression , expression , expression block
+    (16) foreach_stmt -> . id [ nl statement_list ]
+    (17) while_stmt -> . WHILE expression block
+    (18) until_stmt -> . UNTIL expression block
+    (19) expression_stmt -> . expression
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    NEWLINE         shift and go to state 5
+    IF              shift and go to state 12
+    FOR             shift and go to state 14
+    WHILE           shift and go to state 16
+    UNTIL           shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    nl                             shift and go to state 3
+    statement                      shift and go to state 4
+    if_stmt                        shift and go to state 6
+    for_stmt                       shift and go to state 7
+    foreach_stmt                   shift and go to state 8
+    while_stmt                     shift and go to state 9
+    until_stmt                     shift and go to state 10
+    expression_stmt                shift and go to state 11
+    expression                     shift and go to state 13
+    id                             shift and go to state 15
+    call                           shift and go to state 24
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+
+    $end            reduce using rule 1 (program -> statement_list .)
+
+
+state 3
+
+    (2) program -> nl . statement_list
+    (22) nl -> nl . NEWLINE
+    (3) statement_list -> . statement
+    (4) statement_list -> . statement nl
+    (5) statement_list -> . statement nl statement_list
+    (6) statement -> . if_stmt
+    (7) statement -> . for_stmt
+    (8) statement -> . foreach_stmt
+    (9) statement -> . while_stmt
+    (10) statement -> . until_stmt
+    (11) statement -> . expression_stmt
+    (12) if_stmt -> . IF expression block
+    (13) if_stmt -> . IF expression block ELSE block
+    (14) if_stmt -> . IF expression block ELSE if_stmt
+    (15) for_stmt -> . FOR expression , expression , expression block
+    (16) foreach_stmt -> . id [ nl statement_list ]
+    (17) while_stmt -> . WHILE expression block
+    (18) until_stmt -> . UNTIL expression block
+    (19) expression_stmt -> . expression
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    NEWLINE         shift and go to state 26
+    IF              shift and go to state 12
+    FOR             shift and go to state 14
+    WHILE           shift and go to state 16
+    UNTIL           shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+
+    statement_list                 shift and go to state 25
+    statement                      shift and go to state 4
+    if_stmt                        shift and go to state 6
+    for_stmt                       shift and go to state 7
+    foreach_stmt                   shift and go to state 8
+    while_stmt                     shift and go to state 9
+    until_stmt                     shift and go to state 10
+    expression_stmt                shift and go to state 11
+    expression                     shift and go to state 13
+    id                             shift and go to state 15
+    call                           shift and go to state 24
+
+state 4
+
+    (3) statement_list -> statement .
+    (4) statement_list -> statement . nl
+    (5) statement_list -> statement . nl statement_list
+    (21) nl -> . NEWLINE
+    (22) nl -> . nl NEWLINE
+
+    $end            reduce using rule 3 (statement_list -> statement .)
+    ]               reduce using rule 3 (statement_list -> statement .)
+    }               reduce using rule 3 (statement_list -> statement .)
+    NEWLINE         shift and go to state 5
+
+    nl                             shift and go to state 27
+
+state 5
+
+    (21) nl -> NEWLINE .
+
+    NEWLINE         reduce using rule 21 (nl -> NEWLINE .)
+    IF              reduce using rule 21 (nl -> NEWLINE .)
+    FOR             reduce using rule 21 (nl -> NEWLINE .)
+    WHILE           reduce using rule 21 (nl -> NEWLINE .)
+    UNTIL           reduce using rule 21 (nl -> NEWLINE .)
+    IDENTIFIER      reduce using rule 21 (nl -> NEWLINE .)
+    !               reduce using rule 21 (nl -> NEWLINE .)
+    (               reduce using rule 21 (nl -> NEWLINE .)
+    NUMBER          reduce using rule 21 (nl -> NEWLINE .)
+    TRUE            reduce using rule 21 (nl -> NEWLINE .)
+    FALSE           reduce using rule 21 (nl -> NEWLINE .)
+    $end            reduce using rule 21 (nl -> NEWLINE .)
+    ]               reduce using rule 21 (nl -> NEWLINE .)
+    }               reduce using rule 21 (nl -> NEWLINE .)
+
+
+state 6
+
+    (6) statement -> if_stmt .
+
+    NEWLINE         reduce using rule 6 (statement -> if_stmt .)
+    $end            reduce using rule 6 (statement -> if_stmt .)
+    ]               reduce using rule 6 (statement -> if_stmt .)
+    }               reduce using rule 6 (statement -> if_stmt .)
+
+
+state 7
+
+    (7) statement -> for_stmt .
+
+    NEWLINE         reduce using rule 7 (statement -> for_stmt .)
+    $end            reduce using rule 7 (statement -> for_stmt .)
+    ]               reduce using rule 7 (statement -> for_stmt .)
+    }               reduce using rule 7 (statement -> for_stmt .)
+
+
+state 8
+
+    (8) statement -> foreach_stmt .
+
+    NEWLINE         reduce using rule 8 (statement -> foreach_stmt .)
+    $end            reduce using rule 8 (statement -> foreach_stmt .)
+    ]               reduce using rule 8 (statement -> foreach_stmt .)
+    }               reduce using rule 8 (statement -> foreach_stmt .)
+
+
+state 9
+
+    (9) statement -> while_stmt .
+
+    NEWLINE         reduce using rule 9 (statement -> while_stmt .)
+    $end            reduce using rule 9 (statement -> while_stmt .)
+    ]               reduce using rule 9 (statement -> while_stmt .)
+    }               reduce using rule 9 (statement -> while_stmt .)
+
+
+state 10
+
+    (10) statement -> until_stmt .
+
+    NEWLINE         reduce using rule 10 (statement -> until_stmt .)
+    $end            reduce using rule 10 (statement -> until_stmt .)
+    ]               reduce using rule 10 (statement -> until_stmt .)
+    }               reduce using rule 10 (statement -> until_stmt .)
+
+
+state 11
+
+    (11) statement -> expression_stmt .
+
+    NEWLINE         reduce using rule 11 (statement -> expression_stmt .)
+    $end            reduce using rule 11 (statement -> expression_stmt .)
+    ]               reduce using rule 11 (statement -> expression_stmt .)
+    }               reduce using rule 11 (statement -> expression_stmt .)
+
+
+state 12
+
+    (12) if_stmt -> IF . expression block
+    (13) if_stmt -> IF . expression block ELSE block
+    (14) if_stmt -> IF . expression block ELSE if_stmt
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 28
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 13
+
+    (19) expression_stmt -> expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    NEWLINE         reduce using rule 19 (expression_stmt -> expression .)
+    $end            reduce using rule 19 (expression_stmt -> expression .)
+    ]               reduce using rule 19 (expression_stmt -> expression .)
+    }               reduce using rule 19 (expression_stmt -> expression .)
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+
+
+state 14
+
+    (15) for_stmt -> FOR . expression , expression , expression block
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 38
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 15
+
+    (16) foreach_stmt -> id . [ nl statement_list ]
+    (36) expression -> id .
+    (40) call -> id . ( )
+    (41) call -> id . ( parameters )
+
+    [               shift and go to state 39
+    OP_UNARY        reduce using rule 36 (expression -> id .)
+    OP_MUL          reduce using rule 36 (expression -> id .)
+    OP_ADD          reduce using rule 36 (expression -> id .)
+    OP_RELA         reduce using rule 36 (expression -> id .)
+    OP_COMP         reduce using rule 36 (expression -> id .)
+    AND_LOGIC       reduce using rule 36 (expression -> id .)
+    OR_LOGIC        reduce using rule 36 (expression -> id .)
+    OP_ASSIGN       reduce using rule 36 (expression -> id .)
+    NEWLINE         reduce using rule 36 (expression -> id .)
+    $end            reduce using rule 36 (expression -> id .)
+    ]               reduce using rule 36 (expression -> id .)
+    }               reduce using rule 36 (expression -> id .)
+    (               shift and go to state 40
+
+
+state 16
+
+    (17) while_stmt -> WHILE . expression block
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 41
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 17
+
+    (18) until_stmt -> UNTIL . expression block
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 42
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 18
+
+    (38) id -> IDENTIFIER .
+    (39) id -> IDENTIFIER . . id
+
+    [               reduce using rule 38 (id -> IDENTIFIER .)
+    (               reduce using rule 38 (id -> IDENTIFIER .)
+    OP_UNARY        reduce using rule 38 (id -> IDENTIFIER .)
+    OP_MUL          reduce using rule 38 (id -> IDENTIFIER .)
+    OP_ADD          reduce using rule 38 (id -> IDENTIFIER .)
+    OP_RELA         reduce using rule 38 (id -> IDENTIFIER .)
+    OP_COMP         reduce using rule 38 (id -> IDENTIFIER .)
+    AND_LOGIC       reduce using rule 38 (id -> IDENTIFIER .)
+    OR_LOGIC        reduce using rule 38 (id -> IDENTIFIER .)
+    OP_ASSIGN       reduce using rule 38 (id -> IDENTIFIER .)
+    NEWLINE         reduce using rule 38 (id -> IDENTIFIER .)
+    $end            reduce using rule 38 (id -> IDENTIFIER .)
+    {               reduce using rule 38 (id -> IDENTIFIER .)
+    ,               reduce using rule 38 (id -> IDENTIFIER .)
+    )               reduce using rule 38 (id -> IDENTIFIER .)
+    ]               reduce using rule 38 (id -> IDENTIFIER .)
+    }               reduce using rule 38 (id -> IDENTIFIER .)
+    .               shift and go to state 43
+
+
+state 19
+
+    (24) expression -> ! . expression
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 44
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 20
+
+    (32) expression -> ( . expression )
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 45
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 21
+
+    (33) expression -> NUMBER .
+
+    OP_UNARY        reduce using rule 33 (expression -> NUMBER .)
+    OP_MUL          reduce using rule 33 (expression -> NUMBER .)
+    OP_ADD          reduce using rule 33 (expression -> NUMBER .)
+    OP_RELA         reduce using rule 33 (expression -> NUMBER .)
+    OP_COMP         reduce using rule 33 (expression -> NUMBER .)
+    AND_LOGIC       reduce using rule 33 (expression -> NUMBER .)
+    OR_LOGIC        reduce using rule 33 (expression -> NUMBER .)
+    OP_ASSIGN       reduce using rule 33 (expression -> NUMBER .)
+    NEWLINE         reduce using rule 33 (expression -> NUMBER .)
+    $end            reduce using rule 33 (expression -> NUMBER .)
+    {               reduce using rule 33 (expression -> NUMBER .)
+    ,               reduce using rule 33 (expression -> NUMBER .)
+    )               reduce using rule 33 (expression -> NUMBER .)
+    ]               reduce using rule 33 (expression -> NUMBER .)
+    }               reduce using rule 33 (expression -> NUMBER .)
+
+
+state 22
+
+    (34) expression -> TRUE .
+
+    OP_UNARY        reduce using rule 34 (expression -> TRUE .)
+    OP_MUL          reduce using rule 34 (expression -> TRUE .)
+    OP_ADD          reduce using rule 34 (expression -> TRUE .)
+    OP_RELA         reduce using rule 34 (expression -> TRUE .)
+    OP_COMP         reduce using rule 34 (expression -> TRUE .)
+    AND_LOGIC       reduce using rule 34 (expression -> TRUE .)
+    OR_LOGIC        reduce using rule 34 (expression -> TRUE .)
+    OP_ASSIGN       reduce using rule 34 (expression -> TRUE .)
+    NEWLINE         reduce using rule 34 (expression -> TRUE .)
+    $end            reduce using rule 34 (expression -> TRUE .)
+    {               reduce using rule 34 (expression -> TRUE .)
+    ,               reduce using rule 34 (expression -> TRUE .)
+    )               reduce using rule 34 (expression -> TRUE .)
+    ]               reduce using rule 34 (expression -> TRUE .)
+    }               reduce using rule 34 (expression -> TRUE .)
+
+
+state 23
+
+    (35) expression -> FALSE .
+
+    OP_UNARY        reduce using rule 35 (expression -> FALSE .)
+    OP_MUL          reduce using rule 35 (expression -> FALSE .)
+    OP_ADD          reduce using rule 35 (expression -> FALSE .)
+    OP_RELA         reduce using rule 35 (expression -> FALSE .)
+    OP_COMP         reduce using rule 35 (expression -> FALSE .)
+    AND_LOGIC       reduce using rule 35 (expression -> FALSE .)
+    OR_LOGIC        reduce using rule 35 (expression -> FALSE .)
+    OP_ASSIGN       reduce using rule 35 (expression -> FALSE .)
+    NEWLINE         reduce using rule 35 (expression -> FALSE .)
+    $end            reduce using rule 35 (expression -> FALSE .)
+    {               reduce using rule 35 (expression -> FALSE .)
+    ,               reduce using rule 35 (expression -> FALSE .)
+    )               reduce using rule 35 (expression -> FALSE .)
+    ]               reduce using rule 35 (expression -> FALSE .)
+    }               reduce using rule 35 (expression -> FALSE .)
+
+
+state 24
+
+    (37) expression -> call .
+
+    OP_UNARY        reduce using rule 37 (expression -> call .)
+    OP_MUL          reduce using rule 37 (expression -> call .)
+    OP_ADD          reduce using rule 37 (expression -> call .)
+    OP_RELA         reduce using rule 37 (expression -> call .)
+    OP_COMP         reduce using rule 37 (expression -> call .)
+    AND_LOGIC       reduce using rule 37 (expression -> call .)
+    OR_LOGIC        reduce using rule 37 (expression -> call .)
+    OP_ASSIGN       reduce using rule 37 (expression -> call .)
+    NEWLINE         reduce using rule 37 (expression -> call .)
+    $end            reduce using rule 37 (expression -> call .)
+    {               reduce using rule 37 (expression -> call .)
+    ,               reduce using rule 37 (expression -> call .)
+    )               reduce using rule 37 (expression -> call .)
+    ]               reduce using rule 37 (expression -> call .)
+    }               reduce using rule 37 (expression -> call .)
+
+
+state 25
+
+    (2) program -> nl statement_list .
+
+    $end            reduce using rule 2 (program -> nl statement_list .)
+
+
+state 26
+
+    (22) nl -> nl NEWLINE .
+
+    NEWLINE         reduce using rule 22 (nl -> nl NEWLINE .)
+    IF              reduce using rule 22 (nl -> nl NEWLINE .)
+    FOR             reduce using rule 22 (nl -> nl NEWLINE .)
+    WHILE           reduce using rule 22 (nl -> nl NEWLINE .)
+    UNTIL           reduce using rule 22 (nl -> nl NEWLINE .)
+    IDENTIFIER      reduce using rule 22 (nl -> nl NEWLINE .)
+    !               reduce using rule 22 (nl -> nl NEWLINE .)
+    (               reduce using rule 22 (nl -> nl NEWLINE .)
+    NUMBER          reduce using rule 22 (nl -> nl NEWLINE .)
+    TRUE            reduce using rule 22 (nl -> nl NEWLINE .)
+    FALSE           reduce using rule 22 (nl -> nl NEWLINE .)
+    $end            reduce using rule 22 (nl -> nl NEWLINE .)
+    ]               reduce using rule 22 (nl -> nl NEWLINE .)
+    }               reduce using rule 22 (nl -> nl NEWLINE .)
+
+
+state 27
+
+    (4) statement_list -> statement nl .
+    (5) statement_list -> statement nl . statement_list
+    (22) nl -> nl . NEWLINE
+    (3) statement_list -> . statement
+    (4) statement_list -> . statement nl
+    (5) statement_list -> . statement nl statement_list
+    (6) statement -> . if_stmt
+    (7) statement -> . for_stmt
+    (8) statement -> . foreach_stmt
+    (9) statement -> . while_stmt
+    (10) statement -> . until_stmt
+    (11) statement -> . expression_stmt
+    (12) if_stmt -> . IF expression block
+    (13) if_stmt -> . IF expression block ELSE block
+    (14) if_stmt -> . IF expression block ELSE if_stmt
+    (15) for_stmt -> . FOR expression , expression , expression block
+    (16) foreach_stmt -> . id [ nl statement_list ]
+    (17) while_stmt -> . WHILE expression block
+    (18) until_stmt -> . UNTIL expression block
+    (19) expression_stmt -> . expression
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    $end            reduce using rule 4 (statement_list -> statement nl .)
+    ]               reduce using rule 4 (statement_list -> statement nl .)
+    }               reduce using rule 4 (statement_list -> statement nl .)
+    NEWLINE         shift and go to state 26
+    IF              shift and go to state 12
+    FOR             shift and go to state 14
+    WHILE           shift and go to state 16
+    UNTIL           shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+
+    statement                      shift and go to state 4
+    statement_list                 shift and go to state 46
+    if_stmt                        shift and go to state 6
+    for_stmt                       shift and go to state 7
+    foreach_stmt                   shift and go to state 8
+    while_stmt                     shift and go to state 9
+    until_stmt                     shift and go to state 10
+    expression_stmt                shift and go to state 11
+    expression                     shift and go to state 13
+    id                             shift and go to state 15
+    call                           shift and go to state 24
+
+state 28
+
+    (12) if_stmt -> IF expression . block
+    (13) if_stmt -> IF expression . block ELSE block
+    (14) if_stmt -> IF expression . block ELSE if_stmt
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+    (20) block -> . { nl statement_list }
+
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+    {               shift and go to state 48
+
+    block                          shift and go to state 47
+
+state 29
+
+    (36) expression -> id .
+    (40) call -> id . ( )
+    (41) call -> id . ( parameters )
+
+    OP_UNARY        reduce using rule 36 (expression -> id .)
+    OP_MUL          reduce using rule 36 (expression -> id .)
+    OP_ADD          reduce using rule 36 (expression -> id .)
+    OP_RELA         reduce using rule 36 (expression -> id .)
+    OP_COMP         reduce using rule 36 (expression -> id .)
+    AND_LOGIC       reduce using rule 36 (expression -> id .)
+    OR_LOGIC        reduce using rule 36 (expression -> id .)
+    OP_ASSIGN       reduce using rule 36 (expression -> id .)
+    {               reduce using rule 36 (expression -> id .)
+    ,               reduce using rule 36 (expression -> id .)
+    NEWLINE         reduce using rule 36 (expression -> id .)
+    $end            reduce using rule 36 (expression -> id .)
+    )               reduce using rule 36 (expression -> id .)
+    ]               reduce using rule 36 (expression -> id .)
+    }               reduce using rule 36 (expression -> id .)
+    (               shift and go to state 40
+
+
+state 30
+
+    (23) expression -> expression OP_UNARY .
+
+    OP_UNARY        reduce using rule 23 (expression -> expression OP_UNARY .)
+    OP_MUL          reduce using rule 23 (expression -> expression OP_UNARY .)
+    OP_ADD          reduce using rule 23 (expression -> expression OP_UNARY .)
+    OP_RELA         reduce using rule 23 (expression -> expression OP_UNARY .)
+    OP_COMP         reduce using rule 23 (expression -> expression OP_UNARY .)
+    AND_LOGIC       reduce using rule 23 (expression -> expression OP_UNARY .)
+    OR_LOGIC        reduce using rule 23 (expression -> expression OP_UNARY .)
+    OP_ASSIGN       reduce using rule 23 (expression -> expression OP_UNARY .)
+    NEWLINE         reduce using rule 23 (expression -> expression OP_UNARY .)
+    $end            reduce using rule 23 (expression -> expression OP_UNARY .)
+    {               reduce using rule 23 (expression -> expression OP_UNARY .)
+    ,               reduce using rule 23 (expression -> expression OP_UNARY .)
+    )               reduce using rule 23 (expression -> expression OP_UNARY .)
+    ]               reduce using rule 23 (expression -> expression OP_UNARY .)
+    }               reduce using rule 23 (expression -> expression OP_UNARY .)
+
+
+state 31
+
+    (25) expression -> expression OP_MUL . expression
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 49
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 32
+
+    (26) expression -> expression OP_ADD . expression
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 50
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 33
+
+    (27) expression -> expression OP_RELA . expression
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 51
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 34
+
+    (28) expression -> expression OP_COMP . expression
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 52
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 35
+
+    (29) expression -> expression AND_LOGIC . expression
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 53
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 36
+
+    (30) expression -> expression OR_LOGIC . expression
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 54
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 37
+
+    (31) expression -> expression OP_ASSIGN . expression
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 55
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 38
+
+    (15) for_stmt -> FOR expression . , expression , expression block
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    ,               shift and go to state 56
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+
+
+state 39
+
+    (16) foreach_stmt -> id [ . nl statement_list ]
+    (21) nl -> . NEWLINE
+    (22) nl -> . nl NEWLINE
+
+    NEWLINE         shift and go to state 5
+
+    nl                             shift and go to state 57
+
+state 40
+
+    (40) call -> id ( . )
+    (41) call -> id ( . parameters )
+    (42) parameters -> . expression
+    (43) parameters -> . expression , parameters
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    )               shift and go to state 58
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    id                             shift and go to state 29
+    parameters                     shift and go to state 59
+    expression                     shift and go to state 60
+    call                           shift and go to state 24
+
+state 41
+
+    (17) while_stmt -> WHILE expression . block
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+    (20) block -> . { nl statement_list }
+
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+    {               shift and go to state 48
+
+    block                          shift and go to state 61
+
+state 42
+
+    (18) until_stmt -> UNTIL expression . block
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+    (20) block -> . { nl statement_list }
+
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+    {               shift and go to state 48
+
+    block                          shift and go to state 62
+
+state 43
+
+    (39) id -> IDENTIFIER . . id
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+
+    IDENTIFIER      shift and go to state 18
+
+    id                             shift and go to state 63
+
+state 44
+
+    (24) expression -> ! expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    OP_UNARY        reduce using rule 24 (expression -> ! expression .)
+    OP_MUL          reduce using rule 24 (expression -> ! expression .)
+    OP_ADD          reduce using rule 24 (expression -> ! expression .)
+    OP_RELA         reduce using rule 24 (expression -> ! expression .)
+    OP_COMP         reduce using rule 24 (expression -> ! expression .)
+    AND_LOGIC       reduce using rule 24 (expression -> ! expression .)
+    OR_LOGIC        reduce using rule 24 (expression -> ! expression .)
+    OP_ASSIGN       reduce using rule 24 (expression -> ! expression .)
+    NEWLINE         reduce using rule 24 (expression -> ! expression .)
+    $end            reduce using rule 24 (expression -> ! expression .)
+    {               reduce using rule 24 (expression -> ! expression .)
+    ,               reduce using rule 24 (expression -> ! expression .)
+    )               reduce using rule 24 (expression -> ! expression .)
+    ]               reduce using rule 24 (expression -> ! expression .)
+    }               reduce using rule 24 (expression -> ! expression .)
+
+  ! OP_UNARY        [ shift and go to state 30 ]
+  ! OP_MUL          [ shift and go to state 31 ]
+  ! OP_ADD          [ shift and go to state 32 ]
+  ! OP_RELA         [ shift and go to state 33 ]
+  ! OP_COMP         [ shift and go to state 34 ]
+  ! AND_LOGIC       [ shift and go to state 35 ]
+  ! OR_LOGIC        [ shift and go to state 36 ]
+  ! OP_ASSIGN       [ shift and go to state 37 ]
+
+
+state 45
+
+    (32) expression -> ( expression . )
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    )               shift and go to state 64
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+
+
+state 46
+
+    (5) statement_list -> statement nl statement_list .
+
+    $end            reduce using rule 5 (statement_list -> statement nl statement_list .)
+    ]               reduce using rule 5 (statement_list -> statement nl statement_list .)
+    }               reduce using rule 5 (statement_list -> statement nl statement_list .)
+
+
+state 47
+
+    (12) if_stmt -> IF expression block .
+    (13) if_stmt -> IF expression block . ELSE block
+    (14) if_stmt -> IF expression block . ELSE if_stmt
+
+    NEWLINE         reduce using rule 12 (if_stmt -> IF expression block .)
+    $end            reduce using rule 12 (if_stmt -> IF expression block .)
+    ]               reduce using rule 12 (if_stmt -> IF expression block .)
+    }               reduce using rule 12 (if_stmt -> IF expression block .)
+    ELSE            shift and go to state 65
+
+
+state 48
+
+    (20) block -> { . nl statement_list }
+    (21) nl -> . NEWLINE
+    (22) nl -> . nl NEWLINE
+
+    NEWLINE         shift and go to state 5
+
+    nl                             shift and go to state 66
+
+state 49
+
+    (25) expression -> expression OP_MUL expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    OP_MUL          reduce using rule 25 (expression -> expression OP_MUL expression .)
+    OP_ADD          reduce using rule 25 (expression -> expression OP_MUL expression .)
+    OP_RELA         reduce using rule 25 (expression -> expression OP_MUL expression .)
+    OP_COMP         reduce using rule 25 (expression -> expression OP_MUL expression .)
+    AND_LOGIC       reduce using rule 25 (expression -> expression OP_MUL expression .)
+    OR_LOGIC        reduce using rule 25 (expression -> expression OP_MUL expression .)
+    OP_ASSIGN       reduce using rule 25 (expression -> expression OP_MUL expression .)
+    NEWLINE         reduce using rule 25 (expression -> expression OP_MUL expression .)
+    $end            reduce using rule 25 (expression -> expression OP_MUL expression .)
+    {               reduce using rule 25 (expression -> expression OP_MUL expression .)
+    ,               reduce using rule 25 (expression -> expression OP_MUL expression .)
+    )               reduce using rule 25 (expression -> expression OP_MUL expression .)
+    ]               reduce using rule 25 (expression -> expression OP_MUL expression .)
+    }               reduce using rule 25 (expression -> expression OP_MUL expression .)
+    OP_UNARY        shift and go to state 30
+
+  ! OP_UNARY        [ reduce using rule 25 (expression -> expression OP_MUL expression .) ]
+  ! OP_MUL          [ shift and go to state 31 ]
+  ! OP_ADD          [ shift and go to state 32 ]
+  ! OP_RELA         [ shift and go to state 33 ]
+  ! OP_COMP         [ shift and go to state 34 ]
+  ! AND_LOGIC       [ shift and go to state 35 ]
+  ! OR_LOGIC        [ shift and go to state 36 ]
+  ! OP_ASSIGN       [ shift and go to state 37 ]
+
+
+state 50
+
+    (26) expression -> expression OP_ADD expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    OP_ADD          reduce using rule 26 (expression -> expression OP_ADD expression .)
+    OP_RELA         reduce using rule 26 (expression -> expression OP_ADD expression .)
+    OP_COMP         reduce using rule 26 (expression -> expression OP_ADD expression .)
+    AND_LOGIC       reduce using rule 26 (expression -> expression OP_ADD expression .)
+    OR_LOGIC        reduce using rule 26 (expression -> expression OP_ADD expression .)
+    OP_ASSIGN       reduce using rule 26 (expression -> expression OP_ADD expression .)
+    NEWLINE         reduce using rule 26 (expression -> expression OP_ADD expression .)
+    $end            reduce using rule 26 (expression -> expression OP_ADD expression .)
+    {               reduce using rule 26 (expression -> expression OP_ADD expression .)
+    ,               reduce using rule 26 (expression -> expression OP_ADD expression .)
+    )               reduce using rule 26 (expression -> expression OP_ADD expression .)
+    ]               reduce using rule 26 (expression -> expression OP_ADD expression .)
+    }               reduce using rule 26 (expression -> expression OP_ADD expression .)
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+
+  ! OP_UNARY        [ reduce using rule 26 (expression -> expression OP_ADD expression .) ]
+  ! OP_MUL          [ reduce using rule 26 (expression -> expression OP_ADD expression .) ]
+  ! OP_ADD          [ shift and go to state 32 ]
+  ! OP_RELA         [ shift and go to state 33 ]
+  ! OP_COMP         [ shift and go to state 34 ]
+  ! AND_LOGIC       [ shift and go to state 35 ]
+  ! OR_LOGIC        [ shift and go to state 36 ]
+  ! OP_ASSIGN       [ shift and go to state 37 ]
+
+
+state 51
+
+    (27) expression -> expression OP_RELA expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    OP_RELA         reduce using rule 27 (expression -> expression OP_RELA expression .)
+    OP_COMP         reduce using rule 27 (expression -> expression OP_RELA expression .)
+    AND_LOGIC       reduce using rule 27 (expression -> expression OP_RELA expression .)
+    OR_LOGIC        reduce using rule 27 (expression -> expression OP_RELA expression .)
+    OP_ASSIGN       reduce using rule 27 (expression -> expression OP_RELA expression .)
+    NEWLINE         reduce using rule 27 (expression -> expression OP_RELA expression .)
+    $end            reduce using rule 27 (expression -> expression OP_RELA expression .)
+    {               reduce using rule 27 (expression -> expression OP_RELA expression .)
+    ,               reduce using rule 27 (expression -> expression OP_RELA expression .)
+    )               reduce using rule 27 (expression -> expression OP_RELA expression .)
+    ]               reduce using rule 27 (expression -> expression OP_RELA expression .)
+    }               reduce using rule 27 (expression -> expression OP_RELA expression .)
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+
+  ! OP_UNARY        [ reduce using rule 27 (expression -> expression OP_RELA expression .) ]
+  ! OP_MUL          [ reduce using rule 27 (expression -> expression OP_RELA expression .) ]
+  ! OP_ADD          [ reduce using rule 27 (expression -> expression OP_RELA expression .) ]
+  ! OP_RELA         [ shift and go to state 33 ]
+  ! OP_COMP         [ shift and go to state 34 ]
+  ! AND_LOGIC       [ shift and go to state 35 ]
+  ! OR_LOGIC        [ shift and go to state 36 ]
+  ! OP_ASSIGN       [ shift and go to state 37 ]
+
+
+state 52
+
+    (28) expression -> expression OP_COMP expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    OP_COMP         reduce using rule 28 (expression -> expression OP_COMP expression .)
+    AND_LOGIC       reduce using rule 28 (expression -> expression OP_COMP expression .)
+    OR_LOGIC        reduce using rule 28 (expression -> expression OP_COMP expression .)
+    OP_ASSIGN       reduce using rule 28 (expression -> expression OP_COMP expression .)
+    NEWLINE         reduce using rule 28 (expression -> expression OP_COMP expression .)
+    $end            reduce using rule 28 (expression -> expression OP_COMP expression .)
+    {               reduce using rule 28 (expression -> expression OP_COMP expression .)
+    ,               reduce using rule 28 (expression -> expression OP_COMP expression .)
+    )               reduce using rule 28 (expression -> expression OP_COMP expression .)
+    ]               reduce using rule 28 (expression -> expression OP_COMP expression .)
+    }               reduce using rule 28 (expression -> expression OP_COMP expression .)
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+
+  ! OP_UNARY        [ reduce using rule 28 (expression -> expression OP_COMP expression .) ]
+  ! OP_MUL          [ reduce using rule 28 (expression -> expression OP_COMP expression .) ]
+  ! OP_ADD          [ reduce using rule 28 (expression -> expression OP_COMP expression .) ]
+  ! OP_RELA         [ reduce using rule 28 (expression -> expression OP_COMP expression .) ]
+  ! OP_COMP         [ shift and go to state 34 ]
+  ! AND_LOGIC       [ shift and go to state 35 ]
+  ! OR_LOGIC        [ shift and go to state 36 ]
+  ! OP_ASSIGN       [ shift and go to state 37 ]
+
+
+state 53
+
+    (29) expression -> expression AND_LOGIC expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    AND_LOGIC       reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    OR_LOGIC        reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    OP_ASSIGN       reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    NEWLINE         reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    $end            reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    {               reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    ,               reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    )               reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    ]               reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    }               reduce using rule 29 (expression -> expression AND_LOGIC expression .)
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+
+  ! OP_UNARY        [ reduce using rule 29 (expression -> expression AND_LOGIC expression .) ]
+  ! OP_MUL          [ reduce using rule 29 (expression -> expression AND_LOGIC expression .) ]
+  ! OP_ADD          [ reduce using rule 29 (expression -> expression AND_LOGIC expression .) ]
+  ! OP_RELA         [ reduce using rule 29 (expression -> expression AND_LOGIC expression .) ]
+  ! OP_COMP         [ reduce using rule 29 (expression -> expression AND_LOGIC expression .) ]
+  ! AND_LOGIC       [ shift and go to state 35 ]
+  ! OR_LOGIC        [ shift and go to state 36 ]
+  ! OP_ASSIGN       [ shift and go to state 37 ]
+
+
+state 54
+
+    (30) expression -> expression OR_LOGIC expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    OR_LOGIC        reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    OP_ASSIGN       reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    NEWLINE         reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    $end            reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    {               reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    ,               reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    )               reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    ]               reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    }               reduce using rule 30 (expression -> expression OR_LOGIC expression .)
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+
+  ! OP_UNARY        [ reduce using rule 30 (expression -> expression OR_LOGIC expression .) ]
+  ! OP_MUL          [ reduce using rule 30 (expression -> expression OR_LOGIC expression .) ]
+  ! OP_ADD          [ reduce using rule 30 (expression -> expression OR_LOGIC expression .) ]
+  ! OP_RELA         [ reduce using rule 30 (expression -> expression OR_LOGIC expression .) ]
+  ! OP_COMP         [ reduce using rule 30 (expression -> expression OR_LOGIC expression .) ]
+  ! AND_LOGIC       [ reduce using rule 30 (expression -> expression OR_LOGIC expression .) ]
+  ! OR_LOGIC        [ shift and go to state 36 ]
+  ! OP_ASSIGN       [ shift and go to state 37 ]
+
+
+state 55
+
+    (31) expression -> expression OP_ASSIGN expression .
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    NEWLINE         reduce using rule 31 (expression -> expression OP_ASSIGN expression .)
+    $end            reduce using rule 31 (expression -> expression OP_ASSIGN expression .)
+    {               reduce using rule 31 (expression -> expression OP_ASSIGN expression .)
+    ,               reduce using rule 31 (expression -> expression OP_ASSIGN expression .)
+    )               reduce using rule 31 (expression -> expression OP_ASSIGN expression .)
+    ]               reduce using rule 31 (expression -> expression OP_ASSIGN expression .)
+    }               reduce using rule 31 (expression -> expression OP_ASSIGN expression .)
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+
+  ! OP_UNARY        [ reduce using rule 31 (expression -> expression OP_ASSIGN expression .) ]
+  ! OP_MUL          [ reduce using rule 31 (expression -> expression OP_ASSIGN expression .) ]
+  ! OP_ADD          [ reduce using rule 31 (expression -> expression OP_ASSIGN expression .) ]
+  ! OP_RELA         [ reduce using rule 31 (expression -> expression OP_ASSIGN expression .) ]
+  ! OP_COMP         [ reduce using rule 31 (expression -> expression OP_ASSIGN expression .) ]
+  ! AND_LOGIC       [ reduce using rule 31 (expression -> expression OP_ASSIGN expression .) ]
+  ! OR_LOGIC        [ reduce using rule 31 (expression -> expression OP_ASSIGN expression .) ]
+  ! OP_ASSIGN       [ reduce using rule 31 (expression -> expression OP_ASSIGN expression .) ]
+
+
+state 56
+
+    (15) for_stmt -> FOR expression , . expression , expression block
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 67
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 57
+
+    (16) foreach_stmt -> id [ nl . statement_list ]
+    (22) nl -> nl . NEWLINE
+    (3) statement_list -> . statement
+    (4) statement_list -> . statement nl
+    (5) statement_list -> . statement nl statement_list
+    (6) statement -> . if_stmt
+    (7) statement -> . for_stmt
+    (8) statement -> . foreach_stmt
+    (9) statement -> . while_stmt
+    (10) statement -> . until_stmt
+    (11) statement -> . expression_stmt
+    (12) if_stmt -> . IF expression block
+    (13) if_stmt -> . IF expression block ELSE block
+    (14) if_stmt -> . IF expression block ELSE if_stmt
+    (15) for_stmt -> . FOR expression , expression , expression block
+    (16) foreach_stmt -> . id [ nl statement_list ]
+    (17) while_stmt -> . WHILE expression block
+    (18) until_stmt -> . UNTIL expression block
+    (19) expression_stmt -> . expression
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    NEWLINE         shift and go to state 26
+    IF              shift and go to state 12
+    FOR             shift and go to state 14
+    WHILE           shift and go to state 16
+    UNTIL           shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+
+    id                             shift and go to state 15
+    statement_list                 shift and go to state 68
+    statement                      shift and go to state 4
+    if_stmt                        shift and go to state 6
+    for_stmt                       shift and go to state 7
+    foreach_stmt                   shift and go to state 8
+    while_stmt                     shift and go to state 9
+    until_stmt                     shift and go to state 10
+    expression_stmt                shift and go to state 11
+    expression                     shift and go to state 13
+    call                           shift and go to state 24
+
+state 58
+
+    (40) call -> id ( ) .
+
+    OP_UNARY        reduce using rule 40 (call -> id ( ) .)
+    OP_MUL          reduce using rule 40 (call -> id ( ) .)
+    OP_ADD          reduce using rule 40 (call -> id ( ) .)
+    OP_RELA         reduce using rule 40 (call -> id ( ) .)
+    OP_COMP         reduce using rule 40 (call -> id ( ) .)
+    AND_LOGIC       reduce using rule 40 (call -> id ( ) .)
+    OR_LOGIC        reduce using rule 40 (call -> id ( ) .)
+    OP_ASSIGN       reduce using rule 40 (call -> id ( ) .)
+    NEWLINE         reduce using rule 40 (call -> id ( ) .)
+    $end            reduce using rule 40 (call -> id ( ) .)
+    {               reduce using rule 40 (call -> id ( ) .)
+    ,               reduce using rule 40 (call -> id ( ) .)
+    )               reduce using rule 40 (call -> id ( ) .)
+    ]               reduce using rule 40 (call -> id ( ) .)
+    }               reduce using rule 40 (call -> id ( ) .)
+
+
+state 59
+
+    (41) call -> id ( parameters . )
+
+    )               shift and go to state 69
+
+
+state 60
+
+    (42) parameters -> expression .
+    (43) parameters -> expression . , parameters
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    )               reduce using rule 42 (parameters -> expression .)
+    ,               shift and go to state 70
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+
+
+state 61
+
+    (17) while_stmt -> WHILE expression block .
+
+    NEWLINE         reduce using rule 17 (while_stmt -> WHILE expression block .)
+    $end            reduce using rule 17 (while_stmt -> WHILE expression block .)
+    ]               reduce using rule 17 (while_stmt -> WHILE expression block .)
+    }               reduce using rule 17 (while_stmt -> WHILE expression block .)
+
+
+state 62
+
+    (18) until_stmt -> UNTIL expression block .
+
+    NEWLINE         reduce using rule 18 (until_stmt -> UNTIL expression block .)
+    $end            reduce using rule 18 (until_stmt -> UNTIL expression block .)
+    ]               reduce using rule 18 (until_stmt -> UNTIL expression block .)
+    }               reduce using rule 18 (until_stmt -> UNTIL expression block .)
+
+
+state 63
+
+    (39) id -> IDENTIFIER . id .
+
+    [               reduce using rule 39 (id -> IDENTIFIER . id .)
+    (               reduce using rule 39 (id -> IDENTIFIER . id .)
+    OP_UNARY        reduce using rule 39 (id -> IDENTIFIER . id .)
+    OP_MUL          reduce using rule 39 (id -> IDENTIFIER . id .)
+    OP_ADD          reduce using rule 39 (id -> IDENTIFIER . id .)
+    OP_RELA         reduce using rule 39 (id -> IDENTIFIER . id .)
+    OP_COMP         reduce using rule 39 (id -> IDENTIFIER . id .)
+    AND_LOGIC       reduce using rule 39 (id -> IDENTIFIER . id .)
+    OR_LOGIC        reduce using rule 39 (id -> IDENTIFIER . id .)
+    OP_ASSIGN       reduce using rule 39 (id -> IDENTIFIER . id .)
+    NEWLINE         reduce using rule 39 (id -> IDENTIFIER . id .)
+    $end            reduce using rule 39 (id -> IDENTIFIER . id .)
+    {               reduce using rule 39 (id -> IDENTIFIER . id .)
+    ,               reduce using rule 39 (id -> IDENTIFIER . id .)
+    )               reduce using rule 39 (id -> IDENTIFIER . id .)
+    ]               reduce using rule 39 (id -> IDENTIFIER . id .)
+    }               reduce using rule 39 (id -> IDENTIFIER . id .)
+
+
+state 64
+
+    (32) expression -> ( expression ) .
+
+    OP_UNARY        reduce using rule 32 (expression -> ( expression ) .)
+    OP_MUL          reduce using rule 32 (expression -> ( expression ) .)
+    OP_ADD          reduce using rule 32 (expression -> ( expression ) .)
+    OP_RELA         reduce using rule 32 (expression -> ( expression ) .)
+    OP_COMP         reduce using rule 32 (expression -> ( expression ) .)
+    AND_LOGIC       reduce using rule 32 (expression -> ( expression ) .)
+    OR_LOGIC        reduce using rule 32 (expression -> ( expression ) .)
+    OP_ASSIGN       reduce using rule 32 (expression -> ( expression ) .)
+    NEWLINE         reduce using rule 32 (expression -> ( expression ) .)
+    $end            reduce using rule 32 (expression -> ( expression ) .)
+    {               reduce using rule 32 (expression -> ( expression ) .)
+    ,               reduce using rule 32 (expression -> ( expression ) .)
+    )               reduce using rule 32 (expression -> ( expression ) .)
+    ]               reduce using rule 32 (expression -> ( expression ) .)
+    }               reduce using rule 32 (expression -> ( expression ) .)
+
+
+state 65
+
+    (13) if_stmt -> IF expression block ELSE . block
+    (14) if_stmt -> IF expression block ELSE . if_stmt
+    (20) block -> . { nl statement_list }
+    (12) if_stmt -> . IF expression block
+    (13) if_stmt -> . IF expression block ELSE block
+    (14) if_stmt -> . IF expression block ELSE if_stmt
+
+    {               shift and go to state 48
+    IF              shift and go to state 12
+
+    block                          shift and go to state 71
+    if_stmt                        shift and go to state 72
+
+state 66
+
+    (20) block -> { nl . statement_list }
+    (22) nl -> nl . NEWLINE
+    (3) statement_list -> . statement
+    (4) statement_list -> . statement nl
+    (5) statement_list -> . statement nl statement_list
+    (6) statement -> . if_stmt
+    (7) statement -> . for_stmt
+    (8) statement -> . foreach_stmt
+    (9) statement -> . while_stmt
+    (10) statement -> . until_stmt
+    (11) statement -> . expression_stmt
+    (12) if_stmt -> . IF expression block
+    (13) if_stmt -> . IF expression block ELSE block
+    (14) if_stmt -> . IF expression block ELSE if_stmt
+    (15) for_stmt -> . FOR expression , expression , expression block
+    (16) foreach_stmt -> . id [ nl statement_list ]
+    (17) while_stmt -> . WHILE expression block
+    (18) until_stmt -> . UNTIL expression block
+    (19) expression_stmt -> . expression
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    NEWLINE         shift and go to state 26
+    IF              shift and go to state 12
+    FOR             shift and go to state 14
+    WHILE           shift and go to state 16
+    UNTIL           shift and go to state 17
+    IDENTIFIER      shift and go to state 18
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+
+    statement_list                 shift and go to state 73
+    statement                      shift and go to state 4
+    if_stmt                        shift and go to state 6
+    for_stmt                       shift and go to state 7
+    foreach_stmt                   shift and go to state 8
+    while_stmt                     shift and go to state 9
+    until_stmt                     shift and go to state 10
+    expression_stmt                shift and go to state 11
+    expression                     shift and go to state 13
+    id                             shift and go to state 15
+    call                           shift and go to state 24
+
+state 67
+
+    (15) for_stmt -> FOR expression , expression . , expression block
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+
+    ,               shift and go to state 74
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+
+
+state 68
+
+    (16) foreach_stmt -> id [ nl statement_list . ]
+
+    ]               shift and go to state 75
+
+
+state 69
+
+    (41) call -> id ( parameters ) .
+
+    OP_UNARY        reduce using rule 41 (call -> id ( parameters ) .)
+    OP_MUL          reduce using rule 41 (call -> id ( parameters ) .)
+    OP_ADD          reduce using rule 41 (call -> id ( parameters ) .)
+    OP_RELA         reduce using rule 41 (call -> id ( parameters ) .)
+    OP_COMP         reduce using rule 41 (call -> id ( parameters ) .)
+    AND_LOGIC       reduce using rule 41 (call -> id ( parameters ) .)
+    OR_LOGIC        reduce using rule 41 (call -> id ( parameters ) .)
+    OP_ASSIGN       reduce using rule 41 (call -> id ( parameters ) .)
+    NEWLINE         reduce using rule 41 (call -> id ( parameters ) .)
+    $end            reduce using rule 41 (call -> id ( parameters ) .)
+    {               reduce using rule 41 (call -> id ( parameters ) .)
+    ,               reduce using rule 41 (call -> id ( parameters ) .)
+    )               reduce using rule 41 (call -> id ( parameters ) .)
+    ]               reduce using rule 41 (call -> id ( parameters ) .)
+    }               reduce using rule 41 (call -> id ( parameters ) .)
+
+
+state 70
+
+    (43) parameters -> expression , . parameters
+    (42) parameters -> . expression
+    (43) parameters -> . expression , parameters
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 60
+    parameters                     shift and go to state 76
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 71
+
+    (13) if_stmt -> IF expression block ELSE block .
+
+    NEWLINE         reduce using rule 13 (if_stmt -> IF expression block ELSE block .)
+    $end            reduce using rule 13 (if_stmt -> IF expression block ELSE block .)
+    ]               reduce using rule 13 (if_stmt -> IF expression block ELSE block .)
+    }               reduce using rule 13 (if_stmt -> IF expression block ELSE block .)
+
+
+state 72
+
+    (14) if_stmt -> IF expression block ELSE if_stmt .
+
+    NEWLINE         reduce using rule 14 (if_stmt -> IF expression block ELSE if_stmt .)
+    $end            reduce using rule 14 (if_stmt -> IF expression block ELSE if_stmt .)
+    ]               reduce using rule 14 (if_stmt -> IF expression block ELSE if_stmt .)
+    }               reduce using rule 14 (if_stmt -> IF expression block ELSE if_stmt .)
+
+
+state 73
+
+    (20) block -> { nl statement_list . }
+
+    }               shift and go to state 77
+
+
+state 74
+
+    (15) for_stmt -> FOR expression , expression , . expression block
+    (23) expression -> . expression OP_UNARY
+    (24) expression -> . ! expression
+    (25) expression -> . expression OP_MUL expression
+    (26) expression -> . expression OP_ADD expression
+    (27) expression -> . expression OP_RELA expression
+    (28) expression -> . expression OP_COMP expression
+    (29) expression -> . expression AND_LOGIC expression
+    (30) expression -> . expression OR_LOGIC expression
+    (31) expression -> . expression OP_ASSIGN expression
+    (32) expression -> . ( expression )
+    (33) expression -> . NUMBER
+    (34) expression -> . TRUE
+    (35) expression -> . FALSE
+    (36) expression -> . id
+    (37) expression -> . call
+    (38) id -> . IDENTIFIER
+    (39) id -> . IDENTIFIER . id
+    (40) call -> . id ( )
+    (41) call -> . id ( parameters )
+
+    !               shift and go to state 19
+    (               shift and go to state 20
+    NUMBER          shift and go to state 21
+    TRUE            shift and go to state 22
+    FALSE           shift and go to state 23
+    IDENTIFIER      shift and go to state 18
+
+    expression                     shift and go to state 78
+    id                             shift and go to state 29
+    call                           shift and go to state 24
+
+state 75
+
+    (16) foreach_stmt -> id [ nl statement_list ] .
+
+    NEWLINE         reduce using rule 16 (foreach_stmt -> id [ nl statement_list ] .)
+    $end            reduce using rule 16 (foreach_stmt -> id [ nl statement_list ] .)
+    ]               reduce using rule 16 (foreach_stmt -> id [ nl statement_list ] .)
+    }               reduce using rule 16 (foreach_stmt -> id [ nl statement_list ] .)
+
+
+state 76
+
+    (43) parameters -> expression , parameters .
+
+    )               reduce using rule 43 (parameters -> expression , parameters .)
+
+
+state 77
+
+    (20) block -> { nl statement_list } .
+
+    ELSE            reduce using rule 20 (block -> { nl statement_list } .)
+    NEWLINE         reduce using rule 20 (block -> { nl statement_list } .)
+    $end            reduce using rule 20 (block -> { nl statement_list } .)
+    ]               reduce using rule 20 (block -> { nl statement_list } .)
+    }               reduce using rule 20 (block -> { nl statement_list } .)
+
+
+state 78
+
+    (15) for_stmt -> FOR expression , expression , expression . block
+    (23) expression -> expression . OP_UNARY
+    (25) expression -> expression . OP_MUL expression
+    (26) expression -> expression . OP_ADD expression
+    (27) expression -> expression . OP_RELA expression
+    (28) expression -> expression . OP_COMP expression
+    (29) expression -> expression . AND_LOGIC expression
+    (30) expression -> expression . OR_LOGIC expression
+    (31) expression -> expression . OP_ASSIGN expression
+    (20) block -> . { nl statement_list }
+
+    OP_UNARY        shift and go to state 30
+    OP_MUL          shift and go to state 31
+    OP_ADD          shift and go to state 32
+    OP_RELA         shift and go to state 33
+    OP_COMP         shift and go to state 34
+    AND_LOGIC       shift and go to state 35
+    OR_LOGIC        shift and go to state 36
+    OP_ASSIGN       shift and go to state 37
+    {               shift and go to state 48
+
+    block                          shift and go to state 79
+
+state 79
+
+    (15) for_stmt -> FOR expression , expression , expression block .
+
+    NEWLINE         reduce using rule 15 (for_stmt -> FOR expression , expression , expression block .)
+    $end            reduce using rule 15 (for_stmt -> FOR expression , expression , expression block .)
+    ]               reduce using rule 15 (for_stmt -> FOR expression , expression , expression block .)
+    }               reduce using rule 15 (for_stmt -> FOR expression , expression , expression block .)
+

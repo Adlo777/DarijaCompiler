@@ -1,0 +1,71 @@
+# IF_STMT
+if i == 2 {
+    i++
+}
+
+
+# FOR_STMT
+for i = 1, i <= 10, i++ {
+    i++
+}
+
+# FOREACH_STMT
+toto.all [
+    i++
+]
+
+# WHILE_STMT
+while i == 2 {
+    i++
+}
+
+# UNTIL_STMT
+until i == 2 {
+    i++
+}
+
+# EXPRESSION_STMT
+i++
+i--
+
+!i
+
+i * 2
+i / 2
+i % 2
+
+i + 2
+i - 2
+
+i < 2
+i <= 2
+i > 2
+i >= 2
+
+i == 2
+i != 2
+
+i && k
+i || k
+
+i = 2
+i += 2
+i *= 2
+i -= 2
+i /= 2
+i %= 2
+
+(i + 2)
+
+12
+
+toto
+toto.a
+
+titi()
+titi(i)
+titi(i,j)
+titi.b()
+
+true
+false

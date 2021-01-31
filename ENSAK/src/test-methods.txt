@@ -1,0 +1,87 @@
+# ***************************************************
+# TEST RGB
+# ***************************************************
+c = rgb(10, 10, 10)
+echo(c)
+echo(c.getR())
+c.setR(20)
+echo(c.getG())
+c.setG(20)
+echo(c.getB())
+c.setB(20)
+
+# ***************************************************
+# TEST OF WORLD
+# ***************************************************
+init()
+init(20)
+init(20, 30)
+init(20, 30, rgb(10, 10, 10))
+echo(getColor())
+setColor(rgb(20, 20, 20))
+echo(getNbX())
+echo(getNbY())
+echo(rgb(10, 10, 10))
+echo(truck())
+echo(truck(2))
+echo(truck(2, 2))
+echo(truck(2, 2, 3))
+echo(car())
+echo(car(2))
+echo(car(2, 2))
+echo(car(2, 2, 3))
+echo(rand())
+echo(rand(5, 10))
+echo(ceil(10.2))
+echo(ceil(10.7))
+echo(floor(10.2))
+echo(floor(10.7))
+paint()
+paint(1)
+echo(12)
+
+# ***************************************************
+# TEST OF WORLDOBJECT, CAR AND TRUCK
+# ***************************************************
+t = truck(5, 5)
+echo(t)
+echo(t.isCar())
+echo(t.isTruck())
+echo(t.getX())
+t.setX(4)
+echo(t.getY())
+t.setY(4)
+echo(t.getDirection())
+t.setDirection(2)
+echo(t.pick(2))
+echo(t.pickForward())
+echo(t.pickBackward())
+echo(t.pickNeighbours())
+echo(t.pickOver())
+t.forward()
+t.backward()
+t.turn()
+t.turn(3)
+
+# ***************************************************
+# TEST OF COLLECTION
+# ***************************************************
+l1 = truck() + t
+echo(l1)
+l1.add(car())
+echo(l1)
+l1.remove(t)
+echo(l1)
+l2 = truck() + car()
+echo(l2)
+l2.addList(l1)
+echo(l2)
+l2.removeList(l1)
+echo(l2)
+l2.forward()
+l2.backward()
+l2.turn(1)
+echo(l2.count())
+echo(l2.cars)
+echo(l2.trucks)
+echo(l2.all)

@@ -1,0 +1,62 @@
+# LEX ERRORS
+#ça = 2
+
+# PARSER ERRORS
+#a +- 4
+
+# INTERPRETER ERRORS
+#Foreach loop
+# a = 2
+# a [
+#    current.b = 4
+# ]
+
+# Operators
+a = 4
+c1 = car()
+c2 = car()
+l1 = c1 + c2
+#c1 * 2
+#c1 * l1
+#c1 * c2
+#2 * c1
+#l1 * 2
+#l1 * l1
+#l1 * c1
+#a / 0
+#a /= 0
+#a % 0
+#a %= 0
+
+# Functions
+#a = f(4)
+
+# Identifiers
+#current = 4
+#toto.titi = 2
+
+# Tokens
+#true = 2
+
+# RGB function
+a = rgb(1, 2, 3)
+#rgb(x, 2, 4)
+#a.setR(x)
+#a.setG(x)
+#a.setB(x)
+
+# World
+#init(20, 20, 20)
+#init(c1)
+#setColor(10)
+
+# Rand function
+#rand(2)
+#rand(c1)
+
+# World objects
+#car(x)
+#c1.setX(x)
+#c1.setY(y)
+#c1.setDirection(x)
+#c1.turn(x)

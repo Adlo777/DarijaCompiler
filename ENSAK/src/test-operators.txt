@@ -1,0 +1,185 @@
+c1 = car()
+c2 = car()
+t1 = truck()
+l1 = c1 + t1
+l2 = c1 + t1
+
+# ***************************************************
+# TEST OF OP_COMP
+# ***************************************************
+# ==
+echo(2 == 2)
+echo(2 == 3)
+echo(c1 == c1)
+echo(c1 == t1)
+echo(l1 == l1)
+echo(l1 == l2)
+echo(a == e)
+
+# !=
+echo(2 != 2)
+echo(2 != 3)
+echo(c1 != c1)
+echo(c1 != t1)
+echo(l1 != l1)
+echo(l1 != l2)
+echo(a != e)
+
+# ***************************************************
+# TEST OF OP_ASSIGN
+# ***************************************************
+# =
+a = 2
+echo(a)
+echo(c2)
+c2 = c1
+echo(c1)
+echo(c2)
+l3 = c1 + t1
+echo(l3)
+
+# *=
+a *= 2
+echo(a)
+
+# +=
+a += 4
+echo(a)
+
+# -=
+a -= 4
+echo(a)
+
+# /=
+a /= 2
+#a /= 0
+echo(a)
+
+# %=
+a %= 2
+#a %= 0
+echo(a)
+
+# ***************************************************
+# TEST OF UNARY
+# ***************************************************
+# ++
+a = 4
+a++
+echo(a)
+
+# --
+a = 4
+a--
+echo(a)
+
+# ***************************************************
+# TEST OF OP_MUL
+# ***************************************************
+# *
+a = 2
+b = 4
+echo(1 * 10)
+echo(a * 2)
+echo(2 * b)
+echo(a * b)
+
+# /
+echo(5 / 2)
+echo(2 / a)
+echo(a / 2)
+echo(a / b)
+#echo(4 / 0)
+echo(0 / 4)     
+
+# %
+echo(2 % 2)
+echo(a % 2)
+echo(2 % a)
+echo(a % b)
+#echo(a % 0)
+
+# ***************************************************
+# TEST OF OP_ADD
+# ***************************************************
+# +
+echo(2 + 1)
+echo(a + 1)
+echo(a + b)
+echo(c1 + t1)
+l1 = c1 + c2
+echo(l1 + t1)
+echo(l1)
+
+# -
+echo(2 - 1)
+echo(a - 1)
+echo(1 - a)
+echo(a - b)
+
+# ***************************************************
+# TEST OF OP_RELA
+# ***************************************************
+# <
+echo(2 < 2)
+echo(2 < 3)
+echo(3 < 2)
+echo(a < 2)
+echo(2 < a)
+echo(a < b)
+
+# <=
+echo(2 <= 2)
+echo(2 <= 3)
+echo(3 <= 2)
+echo(a <= 2)
+echo(2 <= a)
+echo(a <= b)
+
+# >
+echo(2 > 2)
+echo(2 > 3)
+echo(3 > 2)
+echo(a > 2)
+echo(2 > a)
+echo(a > b)
+
+# >=
+echo(2 >= 2)
+echo(2 >= 3)
+echo(3 >= 2)
+echo(a >= 2)
+echo(2 >= a)
+echo(a >= b)
+
+# ***************************************************
+# TEST OF AND_LOGIC
+# ***************************************************
+# &&
+x = true
+y = false
+echo(true && false)
+echo(false && true)
+echo(true && true)
+echo(false && false)
+echo(x && true)
+echo(x && false)
+echo(true && x)
+echo(false && x)
+echo(x && y)
+
+# ***************************************************
+# TEST OF OR_LOGIC
+# ***************************************************
+# ||
+echo(true || false)
+echo(false || true)
+echo(true || true)
+echo(false || false)
+echo(x || true)
+echo(x || false)
+echo(true || x)
+echo(false || x)
+echo(x || y)
+
+#12++

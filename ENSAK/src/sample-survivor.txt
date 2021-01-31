@@ -1,0 +1,88 @@
+# =======================================
+# World Race -- Darija Compiler
+# =======================================
+
+# Initialise le monde
+init(15, 15, rgb(255, 0, 0))
+
+# Crée 50 véhicules placés aléatoirement
+for i = 0, i < 50, i++ {
+    if rand() < 0.5 {
+        truck(rand(0, getNbX() - 1), rand(0, getNbY() - 1))
+    } else {
+        car(rand(0, getNbX() - 1), rand(0, getNbY() - 1))
+    }
+}
+
+# Ajoute de la vie aux véhicules
+trucks [
+    current.life = 2
+]
+cars [
+    current.life = 1
+]
+
+# Fait avancer les véhicules
+survivor = true
+while survivor {
+    survivor = false
+    # Pour chaque véhicule ...
+    all [
+        # S'il a encore de la vive, part au combat
+        if current.life > 0 {
+            # Recherche des ennemis à proximité
+            front = current.pickForward()
+            back = current.pickBackward()
+            # S'il y en a devant ou derrière, attaque
+            if front.count() > 0 {
+                current.forward()
+            } else if back.count() > 0 {
+                current.backward()
+            # Sinon, bouge
+            } else {
+                action = rand(0, 4)
+                if action <= 1 {
+                    current.backward()
+                } else if action >= 3 {
+                    current.forward()
+                } else {
+                    current.turn()
+                }
+            }
+            # Gestion des bords
+            if current.getX() >= getNbX() {
+                current.setX(current.getX() - getNbX())
+            }
+            if current.getX() < 0 {
+                current.setX(getNbX() - (current.getX() + 2))
+            }
+            if current.getY() >= getNbY() {
+                current.setY(current.getY() - getNbY())
+            }
+            if current.getY() < 0 {
+                current.setY(getNbY() - (current.getY() + 2))
+            }
+            # Inflige des dommages lors d'une collision
+            if current.isTruck() {
+                damage = 2
+            } else {
+                damage = 1
+            }
+            over = current.pickOver()
+            over [
+                current.life -= damage
+                if current.life <= 0 {
+                    remove(current)
+                }
+            ]
+            survivor = true
+            paint(0.1)
+        }
+    ]
+}
+
+# Peut durer très très très longtemps ... ^^
+
+# Affichage final
+setColor(rgb(255, 255, 255))
+paint(10)
