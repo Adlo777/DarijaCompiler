@@ -41,45 +41,46 @@ def p_statement_list_recursive(p):
     
 # Definition of "STATEMENT"
 def p_statement(p):
-    '''statement : if_stmt
-            | for_stmt
-            | foreach_stmt
-            | while_stmt
-            | until_stmt
-            | expression_stmt'''
+    '''statement : ila_stmt
+            | men_stmt
+            | lkola_stmt
+            | mahed_stmt
+            | htal_stmt
+            | expression_stmt
+    '''
     p[0] = p[1]
     
-# Definition of "IF_STMT"
-def p_if_stmt(p):
-    '''if_stmt : IF expression block'''
+# Definition of "ILA_STMT"
+def p_ila_stmt(p):
+    '''ila_stmt : ILA expression block'''
     p[0] = AST.IfElseNode(p[2], p[3])
     
-def p_if_stmt_else(p):
-    '''if_stmt : IF expression block ELSE block'''
+def p_ila_stmt_makantch(p):
+    '''ila_stmt : ILA expression block MAKANTCH block'''
     p[0] = AST.IfElseNode(p[2], p[3], p[5])
     
-def p_if_stmt_elseif(p):
-    '''if_stmt : IF expression block ELSE if_stmt'''
+def p_ila_stmt_makantchila(p):
+    '''ila_stmt : ILA expression block MAKANTCH ila_stmt'''
     p[0] = AST.IfElseNode(p[2], p[3], p[5])
     
-# Definition of "FOR_STMT"
-def p_for_stmt(p):
-    '''for_stmt : FOR expression ',' expression ',' expression block'''
+# Definition of "MEN_STMT"
+def p_men_stmt(p):
+    '''men_stmt : MEN expression ',' expression ',' expression block'''
     p[0] = AST.ForNode(p[2], p[4], p[6], p[7])
-    
-# Definition of "FOREACH_STMT"
-def p_foreach_stmt(p):
-    '''foreach_stmt : id '[' nl statement_list ']' '''
+   
+# Definition of "LKOLA_STMT"
+def p_lkola_stmt(p):
+    '''lkola_stmt : id '[' nl statement_list ']' '''
     p[0] = AST.ForEachNode(p[1], p[4])
     
 # Definition of "WHILE_STMT"
-def p_while_stmt(p):
-    '''while_stmt : WHILE expression block'''
+def p_mahed_stmt(p):
+    '''mahed_stmt : MAHED expression block'''
     p[0] = AST.WhileNode(p[2], p[3])
     
 # Definition of "UNTIL_STMT"
-def p_until_stmt(p):
-    '''until_stmt : UNTIL expression block'''
+def p_htal_stmt(p):
+    '''htal_stmt : HTAL expression block'''
     p[0] = AST.UntilNode(p[2], p[3])
     
 # Definition of "EXPRESSION_STMT"
@@ -146,12 +147,12 @@ def p_expression_num(p):
     'expression : NUMBER'
     p[0] = AST.TokenNode(p[1])
     
-def p_expression_true(p):
-    'expression : TRUE'
+def p_expression_s7i7(p):
+    'expression : S7I7'
     p[0] = AST.TokenNode(True)
     
-def p_expression_false(p):
-    'expression : FALSE'
+def p_expression_KHAT2A(p):
+    'expression : KHAT2A'
     p[0] = AST.TokenNode(False)
     
 def p_expression_identifier(p):
@@ -221,7 +222,7 @@ if __name__ == "__main__":
         try:
             file = open(os.path.normpath(os.path.normcase(sys.argv[1])), 'r')
         except IOError:
-            print ("File error: Can't open the file '%s' in read mode!" % sys.argv[1])
+            print ("Khata2 f l fichier: maymkench n9raw had le fichier! '%s'!" % sys.argv[1])
             exit(-1)
             
         import ASTDraw as AST
@@ -242,7 +243,7 @@ if __name__ == "__main__":
             print (result)
             print ("AST was written to", name)
     else:
-        print ("Arguments error: Please specify a file as first argument!")
+        print ("Khata2 f les arguments: Khassek t 7eded fichier f l'argument lewel!")
         exit(-1)
 else:
     import AST as AST

@@ -19,7 +19,7 @@ if __name__ == "__main__":
         try:
             file = open(os.path.normpath(os.path.normcase(sys.argv[1])), 'r')
         except IOError:
-            print ("File error: Can't open the file '%s' in read mode!" % sys.argv[1])
+            print ("Khata2 f l fichier: maymkench n9raw had le fichier!" % sys.argv[1])
             exit(-1)
             
     	# Read file using a context manager
@@ -32,5 +32,5 @@ if __name__ == "__main__":
                 
                 
     else:
-        print ( "Arguments error: Please specify a file as first argument!")
+        print ( "Khata2 f les arguments: Khassek t 7eded fichier f l'argument lewel!")
         exit(-1)

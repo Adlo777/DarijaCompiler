@@ -92,6 +92,20 @@ class ForEachNode(Node):
     
     def __init__(self, id, block):
         Node.__init__(self, [id, block])
+
+
+# ******************************************************************************
+# PrintNode
+# ******************************************************************************
+class PrintNode(Node):
+    def __init__(self, cond, block):
+        self.cond = cond
+        self.block = block
+        
+    def run(self):
+        while self.cond.run():
+            self.block.run()
+                                
         
 # ******************************************************************************
 # WhileNode

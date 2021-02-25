@@ -6,11 +6,11 @@
 init(30, 10, rgb(20, 20, 20))
 
 # Crée 10 véhicules
-for i = 0, i < 10, i++ {
-    if rand() < 0.5 {
+men i = 0, i < 10, i++ {
+    ila rand() < 0.5 {
  # Aléatoirement des camions ou des voiture
         truck(0, i)
-    } else {
+    } makantch {
         car(0, i)
     }
 }
@@ -29,30 +29,30 @@ all [
 ]
 
 # Fait avancer les véhicules
-founded = true
-while founded {
-    founded = false
+founded = s7i7
+mahed founded {
+    founded = khat2a
     # Pour chaque véhicule ...
     all [
         # S'il a encore de l'essence, avance
-        if current.essence > 0 {
+        ila current.essence > 0 {
             # Avance de 0, 1 ou 2 cases en avant
             nb = rand(0, 2)
-            for i = 0, i <= nb, i++ {
+            men i = 0, i <= nb, i++ {
                 current.forward()
                 current.distance++
             }
             # S'il est au bout du terrain, recommence au début
-            if current.getX() >= getNbX() {
+            ila current.getX() >= getNbX() {
                 current.setX(current.getX() - getNbX())
             }
             # Gestion de la consommation d'essence
-            if current.isTruck() {
+            ila current.isTruck() {
                 current.essence -= 2
-            } else {
+            } makantch {
                 current.essence -= 1
             }
-            founded = true
+            founded = s7i7
             paint(0.1)
         }
     ]
@@ -62,10 +62,10 @@ while founded {
 setColor(rgb(255, 255, 255))
 winner = 0
 all [
-    if winner == 0 {
+    ila winner == 0 {
         winner = current
-    } else {
-        if winner.distance < current.distance {
+    } makantch {
+        ila winner.distance < current.distance {
             winner = current
         }
     }
@@ -73,7 +73,7 @@ all [
 
 # Supprime un à un les perdants
 all [
-    if current != winner {
+    ila current != winner {
         remove(current)
         paint(1)
     }
@@ -81,7 +81,7 @@ all [
 
 # Fait faire la fête au vainqueur
 setColor(rgb(0, 255, 0))
-for i = 0, i <= 15, i++ {
+men i = 0, i <= 15, i++ {
     winner.turn()
     paint(0.1)
 }

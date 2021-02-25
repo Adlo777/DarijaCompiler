@@ -63,10 +63,10 @@ a5
 b
 
 # RESERVED WORDS
-if
-else
-while
-until
-for
-true
-false
+ila	
+makantch
+mahed
+htal
+men
+s7i7
+khat2a

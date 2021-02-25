@@ -20,13 +20,14 @@ class LexAnalysisError(Exception):
         
 # List of reserved words
 reserved_words = (
-    'if',
-    'else',
-    'for',
-    'while',
-    'until',
-    'true',
-    'false'
+    'ila',#si
+    'makantch',#sinon
+    'men',#for
+    'mahed',#while
+    'htal',#until
+    'lkola',#foreach
+    's7i7',
+    'khat2a',#false
 )
 
 # List of tokens
@@ -67,7 +68,7 @@ def t_NUMBER(t):
         t.value = float(t.value)   
         print (t.value)
     except ValueError:
-        raise LexAnalysisError("Exception while parsing number", t.lineno, t.value)
+        raise LexAnalysisError("Exception while parsing number" , t.lineno, t.value) #Erreur de parsing
     return t
     
 # Definition of the token "OP_UNARY"
@@ -131,7 +132,7 @@ t_ignore  = ' \t'
 
 # Catch error
 def t_error(t):
-    raise LexAnalysisError("Illegal character", t.lineno, repr(t.value[0]))
+    raise LexAnalysisError("Had l 7erf khate2", t.lineno, repr(t.value[0]))#illegal character
     
 # Construct LEX
 lexer = lex.lex()
@@ -145,7 +146,7 @@ if __name__ == "__main__":
         try:
             file = open(os.path.normpath(os.path.normcase(sys.argv[1])), 'r')
         except IOError:
-            print ("File error: Can't open the file '%s' in read mode!" % sys.argv[1])
+            print ("Khata2 f l fichier: maymkench n9raw had le fichier!" % sys.argv[1])#File error: can't open this file in read mode 
             exit(-1)
     	    
     	# Read file using a context manager
@@ -157,5 +158,5 @@ if __name__ == "__main__":
                     tok = lexer.token()
               
     else:
-        print ("Arguments error: Please specify a file as first argument!")
+        print ("Khata2 f les arguments: Khassek t 7eded fichier f l'argument lewel!")#Arguments error: please specify a file as first argument
         exit(-1)

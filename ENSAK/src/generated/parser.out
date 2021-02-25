@@ -1,5 +1,9 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    LKOLA
+
 Grammar
 
 Rule 0     S' -> program
@@ -8,19 +12,19 @@ Rule 2     program -> nl statement_list
 Rule 3     statement_list -> statement
 Rule 4     statement_list -> statement nl
 Rule 5     statement_list -> statement nl statement_list
-Rule 6     statement -> if_stmt
-Rule 7     statement -> for_stmt
-Rule 8     statement -> foreach_stmt
-Rule 9     statement -> while_stmt
-Rule 10    statement -> until_stmt
+Rule 6     statement -> ila_stmt
+Rule 7     statement -> men_stmt
+Rule 8     statement -> lkola_stmt
+Rule 9     statement -> mahed_stmt
+Rule 10    statement -> htal_stmt
 Rule 11    statement -> expression_stmt
-Rule 12    if_stmt -> IF expression block
-Rule 13    if_stmt -> IF expression block ELSE block
-Rule 14    if_stmt -> IF expression block ELSE if_stmt
-Rule 15    for_stmt -> FOR expression , expression , expression block
-Rule 16    foreach_stmt -> id [ nl statement_list ]
-Rule 17    while_stmt -> WHILE expression block
-Rule 18    until_stmt -> UNTIL expression block
+Rule 12    ila_stmt -> ILA expression block
+Rule 13    ila_stmt -> ILA expression block MAKANTCH block
+Rule 14    ila_stmt -> ILA expression block MAKANTCH ila_stmt
+Rule 15    men_stmt -> MEN expression , expression , expression block
+Rule 16    lkola_stmt -> id [ nl statement_list ]
+Rule 17    mahed_stmt -> MAHED expression block
+Rule 18    htal_stmt -> HTAL expression block
 Rule 19    expression_stmt -> expression
 Rule 20    block -> { nl statement_list }
 Rule 21    nl -> NEWLINE
@@ -36,8 +40,8 @@ Rule 30    expression -> expression OR_LOGIC expression
 Rule 31    expression -> expression OP_ASSIGN expression
 Rule 32    expression -> ( expression )
 Rule 33    expression -> NUMBER
-Rule 34    expression -> TRUE
-Rule 35    expression -> FALSE
+Rule 34    expression -> S7I7
+Rule 35    expression -> KHAT2A
 Rule 36    expression -> id
 Rule 37    expression -> call
 Rule 38    id -> IDENTIFIER
@@ -55,11 +59,14 @@ Terminals, with rules where they appear
 ,                    : 15 15 43
 .                    : 39
 AND_LOGIC            : 29
-ELSE                 : 13 14
-FALSE                : 35
-FOR                  : 15
+HTAL                 : 18
 IDENTIFIER           : 38 39
-IF                   : 12 13 14
+ILA                  : 12 13 14
+KHAT2A               : 35
+LKOLA                : 
+MAHED                : 17
+MAKANTCH             : 13 14
+MEN                  : 15
 NEWLINE              : 21 22
 NUMBER               : 33
 OP_ADD               : 26
@@ -69,9 +76,7 @@ OP_MUL               : 25
 OP_RELA              : 27
 OP_UNARY             : 23
 OR_LOGIC             : 30
-TRUE                 : 34
-UNTIL                : 18
-WHILE                : 17
+S7I7                 : 34
 [                    : 16
 ]                    : 16
 error                : 
@@ -84,17 +89,17 @@ block                : 12 13 13 14 15 17 18
 call                 : 37
 expression           : 12 13 14 15 15 15 17 18 19 23 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 42 43
 expression_stmt      : 11
-for_stmt             : 7
-foreach_stmt         : 8
+htal_stmt            : 10
 id                   : 16 36 39 40 41
-if_stmt              : 6 14
+ila_stmt             : 6 14
+lkola_stmt           : 8
+mahed_stmt           : 9
+men_stmt             : 7
 nl                   : 2 4 5 16 20 22
 parameters           : 41 43
 program              : 0
 statement            : 3 4 5
 statement_list       : 1 2 5 16 20
-until_stmt           : 10
-while_stmt           : 9
 
 Parsing method: LALR
 
@@ -108,19 +113,19 @@ state 0
     (5) statement_list -> . statement nl statement_list
     (21) nl -> . NEWLINE
     (22) nl -> . nl NEWLINE
-    (6) statement -> . if_stmt
-    (7) statement -> . for_stmt
-    (8) statement -> . foreach_stmt
-    (9) statement -> . while_stmt
-    (10) statement -> . until_stmt
+    (6) statement -> . ila_stmt
+    (7) statement -> . men_stmt
+    (8) statement -> . lkola_stmt
+    (9) statement -> . mahed_stmt
+    (10) statement -> . htal_stmt
     (11) statement -> . expression_stmt
-    (12) if_stmt -> . IF expression block
-    (13) if_stmt -> . IF expression block ELSE block
-    (14) if_stmt -> . IF expression block ELSE if_stmt
-    (15) for_stmt -> . FOR expression , expression , expression block
-    (16) foreach_stmt -> . id [ nl statement_list ]
-    (17) while_stmt -> . WHILE expression block
-    (18) until_stmt -> . UNTIL expression block
+    (12) ila_stmt -> . ILA expression block
+    (13) ila_stmt -> . ILA expression block MAKANTCH block
+    (14) ila_stmt -> . ILA expression block MAKANTCH ila_stmt
+    (15) men_stmt -> . MEN expression , expression , expression block
+    (16) lkola_stmt -> . id [ nl statement_list ]
+    (17) mahed_stmt -> . MAHED expression block
+    (18) htal_stmt -> . HTAL expression block
     (19) expression_stmt -> . expression
     (38) id -> . IDENTIFIER
     (39) id -> . IDENTIFIER . id
@@ -135,34 +140,34 @@ state 0
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (40) call -> . id ( )
     (41) call -> . id ( parameters )
 
     NEWLINE         shift and go to state 5
-    IF              shift and go to state 12
-    FOR             shift and go to state 14
-    WHILE           shift and go to state 16
-    UNTIL           shift and go to state 17
+    ILA             shift and go to state 12
+    MEN             shift and go to state 14
+    MAHED           shift and go to state 16
+    HTAL            shift and go to state 17
     IDENTIFIER      shift and go to state 18
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
 
     program                        shift and go to state 1
     statement_list                 shift and go to state 2
     nl                             shift and go to state 3
     statement                      shift and go to state 4
-    if_stmt                        shift and go to state 6
-    for_stmt                       shift and go to state 7
-    foreach_stmt                   shift and go to state 8
-    while_stmt                     shift and go to state 9
-    until_stmt                     shift and go to state 10
+    ila_stmt                       shift and go to state 6
+    men_stmt                       shift and go to state 7
+    lkola_stmt                     shift and go to state 8
+    mahed_stmt                     shift and go to state 9
+    htal_stmt                      shift and go to state 10
     expression_stmt                shift and go to state 11
     expression                     shift and go to state 13
     id                             shift and go to state 15
@@ -188,19 +193,19 @@ state 3
     (3) statement_list -> . statement
     (4) statement_list -> . statement nl
     (5) statement_list -> . statement nl statement_list
-    (6) statement -> . if_stmt
-    (7) statement -> . for_stmt
-    (8) statement -> . foreach_stmt
-    (9) statement -> . while_stmt
-    (10) statement -> . until_stmt
+    (6) statement -> . ila_stmt
+    (7) statement -> . men_stmt
+    (8) statement -> . lkola_stmt
+    (9) statement -> . mahed_stmt
+    (10) statement -> . htal_stmt
     (11) statement -> . expression_stmt
-    (12) if_stmt -> . IF expression block
-    (13) if_stmt -> . IF expression block ELSE block
-    (14) if_stmt -> . IF expression block ELSE if_stmt
-    (15) for_stmt -> . FOR expression , expression , expression block
-    (16) foreach_stmt -> . id [ nl statement_list ]
-    (17) while_stmt -> . WHILE expression block
-    (18) until_stmt -> . UNTIL expression block
+    (12) ila_stmt -> . ILA expression block
+    (13) ila_stmt -> . ILA expression block MAKANTCH block
+    (14) ila_stmt -> . ILA expression block MAKANTCH ila_stmt
+    (15) men_stmt -> . MEN expression , expression , expression block
+    (16) lkola_stmt -> . id [ nl statement_list ]
+    (17) mahed_stmt -> . MAHED expression block
+    (18) htal_stmt -> . HTAL expression block
     (19) expression_stmt -> . expression
     (38) id -> . IDENTIFIER
     (39) id -> . IDENTIFIER . id
@@ -215,32 +220,32 @@ state 3
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (40) call -> . id ( )
     (41) call -> . id ( parameters )
 
     NEWLINE         shift and go to state 26
-    IF              shift and go to state 12
-    FOR             shift and go to state 14
-    WHILE           shift and go to state 16
-    UNTIL           shift and go to state 17
+    ILA             shift and go to state 12
+    MEN             shift and go to state 14
+    MAHED           shift and go to state 16
+    HTAL            shift and go to state 17
     IDENTIFIER      shift and go to state 18
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
 
     statement_list                 shift and go to state 25
     statement                      shift and go to state 4
-    if_stmt                        shift and go to state 6
-    for_stmt                       shift and go to state 7
-    foreach_stmt                   shift and go to state 8
-    while_stmt                     shift and go to state 9
-    until_stmt                     shift and go to state 10
+    ila_stmt                       shift and go to state 6
+    men_stmt                       shift and go to state 7
+    lkola_stmt                     shift and go to state 8
+    mahed_stmt                     shift and go to state 9
+    htal_stmt                      shift and go to state 10
     expression_stmt                shift and go to state 11
     expression                     shift and go to state 13
     id                             shift and go to state 15
@@ -266,16 +271,16 @@ state 5
     (21) nl -> NEWLINE .
 
     NEWLINE         reduce using rule 21 (nl -> NEWLINE .)
-    IF              reduce using rule 21 (nl -> NEWLINE .)
-    FOR             reduce using rule 21 (nl -> NEWLINE .)
-    WHILE           reduce using rule 21 (nl -> NEWLINE .)
-    UNTIL           reduce using rule 21 (nl -> NEWLINE .)
+    ILA             reduce using rule 21 (nl -> NEWLINE .)
+    MEN             reduce using rule 21 (nl -> NEWLINE .)
+    MAHED           reduce using rule 21 (nl -> NEWLINE .)
+    HTAL            reduce using rule 21 (nl -> NEWLINE .)
     IDENTIFIER      reduce using rule 21 (nl -> NEWLINE .)
     !               reduce using rule 21 (nl -> NEWLINE .)
     (               reduce using rule 21 (nl -> NEWLINE .)
     NUMBER          reduce using rule 21 (nl -> NEWLINE .)
-    TRUE            reduce using rule 21 (nl -> NEWLINE .)
-    FALSE           reduce using rule 21 (nl -> NEWLINE .)
+    S7I7            reduce using rule 21 (nl -> NEWLINE .)
+    KHAT2A          reduce using rule 21 (nl -> NEWLINE .)
     $end            reduce using rule 21 (nl -> NEWLINE .)
     ]               reduce using rule 21 (nl -> NEWLINE .)
     }               reduce using rule 21 (nl -> NEWLINE .)
@@ -283,52 +288,52 @@ state 5
 
 state 6
 
-    (6) statement -> if_stmt .
+    (6) statement -> ila_stmt .
 
-    NEWLINE         reduce using rule 6 (statement -> if_stmt .)
-    $end            reduce using rule 6 (statement -> if_stmt .)
-    ]               reduce using rule 6 (statement -> if_stmt .)
-    }               reduce using rule 6 (statement -> if_stmt .)
+    NEWLINE         reduce using rule 6 (statement -> ila_stmt .)
+    $end            reduce using rule 6 (statement -> ila_stmt .)
+    ]               reduce using rule 6 (statement -> ila_stmt .)
+    }               reduce using rule 6 (statement -> ila_stmt .)
 
 
 state 7
 
-    (7) statement -> for_stmt .
+    (7) statement -> men_stmt .
 
-    NEWLINE         reduce using rule 7 (statement -> for_stmt .)
-    $end            reduce using rule 7 (statement -> for_stmt .)
-    ]               reduce using rule 7 (statement -> for_stmt .)
-    }               reduce using rule 7 (statement -> for_stmt .)
+    NEWLINE         reduce using rule 7 (statement -> men_stmt .)
+    $end            reduce using rule 7 (statement -> men_stmt .)
+    ]               reduce using rule 7 (statement -> men_stmt .)
+    }               reduce using rule 7 (statement -> men_stmt .)
 
 
 state 8
 
-    (8) statement -> foreach_stmt .
+    (8) statement -> lkola_stmt .
 
-    NEWLINE         reduce using rule 8 (statement -> foreach_stmt .)
-    $end            reduce using rule 8 (statement -> foreach_stmt .)
-    ]               reduce using rule 8 (statement -> foreach_stmt .)
-    }               reduce using rule 8 (statement -> foreach_stmt .)
+    NEWLINE         reduce using rule 8 (statement -> lkola_stmt .)
+    $end            reduce using rule 8 (statement -> lkola_stmt .)
+    ]               reduce using rule 8 (statement -> lkola_stmt .)
+    }               reduce using rule 8 (statement -> lkola_stmt .)
 
 
 state 9
 
-    (9) statement -> while_stmt .
+    (9) statement -> mahed_stmt .
 
-    NEWLINE         reduce using rule 9 (statement -> while_stmt .)
-    $end            reduce using rule 9 (statement -> while_stmt .)
-    ]               reduce using rule 9 (statement -> while_stmt .)
-    }               reduce using rule 9 (statement -> while_stmt .)
+    NEWLINE         reduce using rule 9 (statement -> mahed_stmt .)
+    $end            reduce using rule 9 (statement -> mahed_stmt .)
+    ]               reduce using rule 9 (statement -> mahed_stmt .)
+    }               reduce using rule 9 (statement -> mahed_stmt .)
 
 
 state 10
 
-    (10) statement -> until_stmt .
+    (10) statement -> htal_stmt .
 
-    NEWLINE         reduce using rule 10 (statement -> until_stmt .)
-    $end            reduce using rule 10 (statement -> until_stmt .)
-    ]               reduce using rule 10 (statement -> until_stmt .)
-    }               reduce using rule 10 (statement -> until_stmt .)
+    NEWLINE         reduce using rule 10 (statement -> htal_stmt .)
+    $end            reduce using rule 10 (statement -> htal_stmt .)
+    ]               reduce using rule 10 (statement -> htal_stmt .)
+    }               reduce using rule 10 (statement -> htal_stmt .)
 
 
 state 11
@@ -343,9 +348,9 @@ state 11
 
 state 12
 
-    (12) if_stmt -> IF . expression block
-    (13) if_stmt -> IF . expression block ELSE block
-    (14) if_stmt -> IF . expression block ELSE if_stmt
+    (12) ila_stmt -> ILA . expression block
+    (13) ila_stmt -> ILA . expression block MAKANTCH block
+    (14) ila_stmt -> ILA . expression block MAKANTCH ila_stmt
     (23) expression -> . expression OP_UNARY
     (24) expression -> . ! expression
     (25) expression -> . expression OP_MUL expression
@@ -357,8 +362,8 @@ state 12
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -369,8 +374,8 @@ state 12
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 28
@@ -405,7 +410,7 @@ state 13
 
 state 14
 
-    (15) for_stmt -> FOR . expression , expression , expression block
+    (15) men_stmt -> MEN . expression , expression , expression block
     (23) expression -> . expression OP_UNARY
     (24) expression -> . ! expression
     (25) expression -> . expression OP_MUL expression
@@ -417,8 +422,8 @@ state 14
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -429,8 +434,8 @@ state 14
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 38
@@ -439,7 +444,7 @@ state 14
 
 state 15
 
-    (16) foreach_stmt -> id . [ nl statement_list ]
+    (16) lkola_stmt -> id . [ nl statement_list ]
     (36) expression -> id .
     (40) call -> id . ( )
     (41) call -> id . ( parameters )
@@ -462,7 +467,7 @@ state 15
 
 state 16
 
-    (17) while_stmt -> WHILE . expression block
+    (17) mahed_stmt -> MAHED . expression block
     (23) expression -> . expression OP_UNARY
     (24) expression -> . ! expression
     (25) expression -> . expression OP_MUL expression
@@ -474,8 +479,8 @@ state 16
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -486,8 +491,8 @@ state 16
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 41
@@ -496,7 +501,7 @@ state 16
 
 state 17
 
-    (18) until_stmt -> UNTIL . expression block
+    (18) htal_stmt -> HTAL . expression block
     (23) expression -> . expression OP_UNARY
     (24) expression -> . ! expression
     (25) expression -> . expression OP_MUL expression
@@ -508,8 +513,8 @@ state 17
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -520,8 +525,8 @@ state 17
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 42
@@ -567,8 +572,8 @@ state 19
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -579,8 +584,8 @@ state 19
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 44
@@ -601,8 +606,8 @@ state 20
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -613,8 +618,8 @@ state 20
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 45
@@ -644,44 +649,44 @@ state 21
 
 state 22
 
-    (34) expression -> TRUE .
+    (34) expression -> S7I7 .
 
-    OP_UNARY        reduce using rule 34 (expression -> TRUE .)
-    OP_MUL          reduce using rule 34 (expression -> TRUE .)
-    OP_ADD          reduce using rule 34 (expression -> TRUE .)
-    OP_RELA         reduce using rule 34 (expression -> TRUE .)
-    OP_COMP         reduce using rule 34 (expression -> TRUE .)
-    AND_LOGIC       reduce using rule 34 (expression -> TRUE .)
-    OR_LOGIC        reduce using rule 34 (expression -> TRUE .)
-    OP_ASSIGN       reduce using rule 34 (expression -> TRUE .)
-    NEWLINE         reduce using rule 34 (expression -> TRUE .)
-    $end            reduce using rule 34 (expression -> TRUE .)
-    {               reduce using rule 34 (expression -> TRUE .)
-    ,               reduce using rule 34 (expression -> TRUE .)
-    )               reduce using rule 34 (expression -> TRUE .)
-    ]               reduce using rule 34 (expression -> TRUE .)
-    }               reduce using rule 34 (expression -> TRUE .)
+    OP_UNARY        reduce using rule 34 (expression -> S7I7 .)
+    OP_MUL          reduce using rule 34 (expression -> S7I7 .)
+    OP_ADD          reduce using rule 34 (expression -> S7I7 .)
+    OP_RELA         reduce using rule 34 (expression -> S7I7 .)
+    OP_COMP         reduce using rule 34 (expression -> S7I7 .)
+    AND_LOGIC       reduce using rule 34 (expression -> S7I7 .)
+    OR_LOGIC        reduce using rule 34 (expression -> S7I7 .)
+    OP_ASSIGN       reduce using rule 34 (expression -> S7I7 .)
+    NEWLINE         reduce using rule 34 (expression -> S7I7 .)
+    $end            reduce using rule 34 (expression -> S7I7 .)
+    {               reduce using rule 34 (expression -> S7I7 .)
+    ,               reduce using rule 34 (expression -> S7I7 .)
+    )               reduce using rule 34 (expression -> S7I7 .)
+    ]               reduce using rule 34 (expression -> S7I7 .)
+    }               reduce using rule 34 (expression -> S7I7 .)
 
 
 state 23
 
-    (35) expression -> FALSE .
+    (35) expression -> KHAT2A .
 
-    OP_UNARY        reduce using rule 35 (expression -> FALSE .)
-    OP_MUL          reduce using rule 35 (expression -> FALSE .)
-    OP_ADD          reduce using rule 35 (expression -> FALSE .)
-    OP_RELA         reduce using rule 35 (expression -> FALSE .)
-    OP_COMP         reduce using rule 35 (expression -> FALSE .)
-    AND_LOGIC       reduce using rule 35 (expression -> FALSE .)
-    OR_LOGIC        reduce using rule 35 (expression -> FALSE .)
-    OP_ASSIGN       reduce using rule 35 (expression -> FALSE .)
-    NEWLINE         reduce using rule 35 (expression -> FALSE .)
-    $end            reduce using rule 35 (expression -> FALSE .)
-    {               reduce using rule 35 (expression -> FALSE .)
-    ,               reduce using rule 35 (expression -> FALSE .)
-    )               reduce using rule 35 (expression -> FALSE .)
-    ]               reduce using rule 35 (expression -> FALSE .)
-    }               reduce using rule 35 (expression -> FALSE .)
+    OP_UNARY        reduce using rule 35 (expression -> KHAT2A .)
+    OP_MUL          reduce using rule 35 (expression -> KHAT2A .)
+    OP_ADD          reduce using rule 35 (expression -> KHAT2A .)
+    OP_RELA         reduce using rule 35 (expression -> KHAT2A .)
+    OP_COMP         reduce using rule 35 (expression -> KHAT2A .)
+    AND_LOGIC       reduce using rule 35 (expression -> KHAT2A .)
+    OR_LOGIC        reduce using rule 35 (expression -> KHAT2A .)
+    OP_ASSIGN       reduce using rule 35 (expression -> KHAT2A .)
+    NEWLINE         reduce using rule 35 (expression -> KHAT2A .)
+    $end            reduce using rule 35 (expression -> KHAT2A .)
+    {               reduce using rule 35 (expression -> KHAT2A .)
+    ,               reduce using rule 35 (expression -> KHAT2A .)
+    )               reduce using rule 35 (expression -> KHAT2A .)
+    ]               reduce using rule 35 (expression -> KHAT2A .)
+    }               reduce using rule 35 (expression -> KHAT2A .)
 
 
 state 24
@@ -717,16 +722,16 @@ state 26
     (22) nl -> nl NEWLINE .
 
     NEWLINE         reduce using rule 22 (nl -> nl NEWLINE .)
-    IF              reduce using rule 22 (nl -> nl NEWLINE .)
-    FOR             reduce using rule 22 (nl -> nl NEWLINE .)
-    WHILE           reduce using rule 22 (nl -> nl NEWLINE .)
-    UNTIL           reduce using rule 22 (nl -> nl NEWLINE .)
+    ILA             reduce using rule 22 (nl -> nl NEWLINE .)
+    MEN             reduce using rule 22 (nl -> nl NEWLINE .)
+    MAHED           reduce using rule 22 (nl -> nl NEWLINE .)
+    HTAL            reduce using rule 22 (nl -> nl NEWLINE .)
     IDENTIFIER      reduce using rule 22 (nl -> nl NEWLINE .)
     !               reduce using rule 22 (nl -> nl NEWLINE .)
     (               reduce using rule 22 (nl -> nl NEWLINE .)
     NUMBER          reduce using rule 22 (nl -> nl NEWLINE .)
-    TRUE            reduce using rule 22 (nl -> nl NEWLINE .)
-    FALSE           reduce using rule 22 (nl -> nl NEWLINE .)
+    S7I7            reduce using rule 22 (nl -> nl NEWLINE .)
+    KHAT2A          reduce using rule 22 (nl -> nl NEWLINE .)
     $end            reduce using rule 22 (nl -> nl NEWLINE .)
     ]               reduce using rule 22 (nl -> nl NEWLINE .)
     }               reduce using rule 22 (nl -> nl NEWLINE .)
@@ -740,19 +745,19 @@ state 27
     (3) statement_list -> . statement
     (4) statement_list -> . statement nl
     (5) statement_list -> . statement nl statement_list
-    (6) statement -> . if_stmt
-    (7) statement -> . for_stmt
-    (8) statement -> . foreach_stmt
-    (9) statement -> . while_stmt
-    (10) statement -> . until_stmt
+    (6) statement -> . ila_stmt
+    (7) statement -> . men_stmt
+    (8) statement -> . lkola_stmt
+    (9) statement -> . mahed_stmt
+    (10) statement -> . htal_stmt
     (11) statement -> . expression_stmt
-    (12) if_stmt -> . IF expression block
-    (13) if_stmt -> . IF expression block ELSE block
-    (14) if_stmt -> . IF expression block ELSE if_stmt
-    (15) for_stmt -> . FOR expression , expression , expression block
-    (16) foreach_stmt -> . id [ nl statement_list ]
-    (17) while_stmt -> . WHILE expression block
-    (18) until_stmt -> . UNTIL expression block
+    (12) ila_stmt -> . ILA expression block
+    (13) ila_stmt -> . ILA expression block MAKANTCH block
+    (14) ila_stmt -> . ILA expression block MAKANTCH ila_stmt
+    (15) men_stmt -> . MEN expression , expression , expression block
+    (16) lkola_stmt -> . id [ nl statement_list ]
+    (17) mahed_stmt -> . MAHED expression block
+    (18) htal_stmt -> . HTAL expression block
     (19) expression_stmt -> . expression
     (38) id -> . IDENTIFIER
     (39) id -> . IDENTIFIER . id
@@ -767,8 +772,8 @@ state 27
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (40) call -> . id ( )
@@ -778,24 +783,24 @@ state 27
     ]               reduce using rule 4 (statement_list -> statement nl .)
     }               reduce using rule 4 (statement_list -> statement nl .)
     NEWLINE         shift and go to state 26
-    IF              shift and go to state 12
-    FOR             shift and go to state 14
-    WHILE           shift and go to state 16
-    UNTIL           shift and go to state 17
+    ILA             shift and go to state 12
+    MEN             shift and go to state 14
+    MAHED           shift and go to state 16
+    HTAL            shift and go to state 17
     IDENTIFIER      shift and go to state 18
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
 
     statement                      shift and go to state 4
     statement_list                 shift and go to state 46
-    if_stmt                        shift and go to state 6
-    for_stmt                       shift and go to state 7
-    foreach_stmt                   shift and go to state 8
-    while_stmt                     shift and go to state 9
-    until_stmt                     shift and go to state 10
+    ila_stmt                       shift and go to state 6
+    men_stmt                       shift and go to state 7
+    lkola_stmt                     shift and go to state 8
+    mahed_stmt                     shift and go to state 9
+    htal_stmt                      shift and go to state 10
     expression_stmt                shift and go to state 11
     expression                     shift and go to state 13
     id                             shift and go to state 15
@@ -803,9 +808,9 @@ state 27
 
 state 28
 
-    (12) if_stmt -> IF expression . block
-    (13) if_stmt -> IF expression . block ELSE block
-    (14) if_stmt -> IF expression . block ELSE if_stmt
+    (12) ila_stmt -> ILA expression . block
+    (13) ila_stmt -> ILA expression . block MAKANTCH block
+    (14) ila_stmt -> ILA expression . block MAKANTCH ila_stmt
     (23) expression -> expression . OP_UNARY
     (25) expression -> expression . OP_MUL expression
     (26) expression -> expression . OP_ADD expression
@@ -887,8 +892,8 @@ state 31
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -899,8 +904,8 @@ state 31
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 49
@@ -921,8 +926,8 @@ state 32
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -933,8 +938,8 @@ state 32
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 50
@@ -955,8 +960,8 @@ state 33
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -967,8 +972,8 @@ state 33
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 51
@@ -989,8 +994,8 @@ state 34
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -1001,8 +1006,8 @@ state 34
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 52
@@ -1023,8 +1028,8 @@ state 35
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -1035,8 +1040,8 @@ state 35
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 53
@@ -1057,8 +1062,8 @@ state 36
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -1069,8 +1074,8 @@ state 36
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 54
@@ -1091,8 +1096,8 @@ state 37
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -1103,8 +1108,8 @@ state 37
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 55
@@ -1113,7 +1118,7 @@ state 37
 
 state 38
 
-    (15) for_stmt -> FOR expression . , expression , expression block
+    (15) men_stmt -> MEN expression . , expression , expression block
     (23) expression -> expression . OP_UNARY
     (25) expression -> expression . OP_MUL expression
     (26) expression -> expression . OP_ADD expression
@@ -1136,7 +1141,7 @@ state 38
 
 state 39
 
-    (16) foreach_stmt -> id [ . nl statement_list ]
+    (16) lkola_stmt -> id [ . nl statement_list ]
     (21) nl -> . NEWLINE
     (22) nl -> . nl NEWLINE
 
@@ -1161,8 +1166,8 @@ state 40
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -1174,8 +1179,8 @@ state 40
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     id                             shift and go to state 29
@@ -1185,7 +1190,7 @@ state 40
 
 state 41
 
-    (17) while_stmt -> WHILE expression . block
+    (17) mahed_stmt -> MAHED expression . block
     (23) expression -> expression . OP_UNARY
     (25) expression -> expression . OP_MUL expression
     (26) expression -> expression . OP_ADD expression
@@ -1210,7 +1215,7 @@ state 41
 
 state 42
 
-    (18) until_stmt -> UNTIL expression . block
+    (18) htal_stmt -> HTAL expression . block
     (23) expression -> expression . OP_UNARY
     (25) expression -> expression . OP_MUL expression
     (26) expression -> expression . OP_ADD expression
@@ -1315,15 +1320,15 @@ state 46
 
 state 47
 
-    (12) if_stmt -> IF expression block .
-    (13) if_stmt -> IF expression block . ELSE block
-    (14) if_stmt -> IF expression block . ELSE if_stmt
+    (12) ila_stmt -> ILA expression block .
+    (13) ila_stmt -> ILA expression block . MAKANTCH block
+    (14) ila_stmt -> ILA expression block . MAKANTCH ila_stmt
 
-    NEWLINE         reduce using rule 12 (if_stmt -> IF expression block .)
-    $end            reduce using rule 12 (if_stmt -> IF expression block .)
-    ]               reduce using rule 12 (if_stmt -> IF expression block .)
-    }               reduce using rule 12 (if_stmt -> IF expression block .)
-    ELSE            shift and go to state 65
+    NEWLINE         reduce using rule 12 (ila_stmt -> ILA expression block .)
+    $end            reduce using rule 12 (ila_stmt -> ILA expression block .)
+    ]               reduce using rule 12 (ila_stmt -> ILA expression block .)
+    }               reduce using rule 12 (ila_stmt -> ILA expression block .)
+    MAKANTCH        shift and go to state 65
 
 
 state 48
@@ -1604,7 +1609,7 @@ state 55
 
 state 56
 
-    (15) for_stmt -> FOR expression , . expression , expression block
+    (15) men_stmt -> MEN expression , . expression , expression block
     (23) expression -> . expression OP_UNARY
     (24) expression -> . ! expression
     (25) expression -> . expression OP_MUL expression
@@ -1616,8 +1621,8 @@ state 56
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -1628,8 +1633,8 @@ state 56
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 67
@@ -1638,24 +1643,24 @@ state 56
 
 state 57
 
-    (16) foreach_stmt -> id [ nl . statement_list ]
+    (16) lkola_stmt -> id [ nl . statement_list ]
     (22) nl -> nl . NEWLINE
     (3) statement_list -> . statement
     (4) statement_list -> . statement nl
     (5) statement_list -> . statement nl statement_list
-    (6) statement -> . if_stmt
-    (7) statement -> . for_stmt
-    (8) statement -> . foreach_stmt
-    (9) statement -> . while_stmt
-    (10) statement -> . until_stmt
+    (6) statement -> . ila_stmt
+    (7) statement -> . men_stmt
+    (8) statement -> . lkola_stmt
+    (9) statement -> . mahed_stmt
+    (10) statement -> . htal_stmt
     (11) statement -> . expression_stmt
-    (12) if_stmt -> . IF expression block
-    (13) if_stmt -> . IF expression block ELSE block
-    (14) if_stmt -> . IF expression block ELSE if_stmt
-    (15) for_stmt -> . FOR expression , expression , expression block
-    (16) foreach_stmt -> . id [ nl statement_list ]
-    (17) while_stmt -> . WHILE expression block
-    (18) until_stmt -> . UNTIL expression block
+    (12) ila_stmt -> . ILA expression block
+    (13) ila_stmt -> . ILA expression block MAKANTCH block
+    (14) ila_stmt -> . ILA expression block MAKANTCH ila_stmt
+    (15) men_stmt -> . MEN expression , expression , expression block
+    (16) lkola_stmt -> . id [ nl statement_list ]
+    (17) mahed_stmt -> . MAHED expression block
+    (18) htal_stmt -> . HTAL expression block
     (19) expression_stmt -> . expression
     (38) id -> . IDENTIFIER
     (39) id -> . IDENTIFIER . id
@@ -1670,33 +1675,33 @@ state 57
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (40) call -> . id ( )
     (41) call -> . id ( parameters )
 
     NEWLINE         shift and go to state 26
-    IF              shift and go to state 12
-    FOR             shift and go to state 14
-    WHILE           shift and go to state 16
-    UNTIL           shift and go to state 17
+    ILA             shift and go to state 12
+    MEN             shift and go to state 14
+    MAHED           shift and go to state 16
+    HTAL            shift and go to state 17
     IDENTIFIER      shift and go to state 18
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
 
     id                             shift and go to state 15
     statement_list                 shift and go to state 68
     statement                      shift and go to state 4
-    if_stmt                        shift and go to state 6
-    for_stmt                       shift and go to state 7
-    foreach_stmt                   shift and go to state 8
-    while_stmt                     shift and go to state 9
-    until_stmt                     shift and go to state 10
+    ila_stmt                       shift and go to state 6
+    men_stmt                       shift and go to state 7
+    lkola_stmt                     shift and go to state 8
+    mahed_stmt                     shift and go to state 9
+    htal_stmt                      shift and go to state 10
     expression_stmt                shift and go to state 11
     expression                     shift and go to state 13
     call                           shift and go to state 24
@@ -1756,22 +1761,22 @@ state 60
 
 state 61
 
-    (17) while_stmt -> WHILE expression block .
+    (17) mahed_stmt -> MAHED expression block .
 
-    NEWLINE         reduce using rule 17 (while_stmt -> WHILE expression block .)
-    $end            reduce using rule 17 (while_stmt -> WHILE expression block .)
-    ]               reduce using rule 17 (while_stmt -> WHILE expression block .)
-    }               reduce using rule 17 (while_stmt -> WHILE expression block .)
+    NEWLINE         reduce using rule 17 (mahed_stmt -> MAHED expression block .)
+    $end            reduce using rule 17 (mahed_stmt -> MAHED expression block .)
+    ]               reduce using rule 17 (mahed_stmt -> MAHED expression block .)
+    }               reduce using rule 17 (mahed_stmt -> MAHED expression block .)
 
 
 state 62
 
-    (18) until_stmt -> UNTIL expression block .
+    (18) htal_stmt -> HTAL expression block .
 
-    NEWLINE         reduce using rule 18 (until_stmt -> UNTIL expression block .)
-    $end            reduce using rule 18 (until_stmt -> UNTIL expression block .)
-    ]               reduce using rule 18 (until_stmt -> UNTIL expression block .)
-    }               reduce using rule 18 (until_stmt -> UNTIL expression block .)
+    NEWLINE         reduce using rule 18 (htal_stmt -> HTAL expression block .)
+    $end            reduce using rule 18 (htal_stmt -> HTAL expression block .)
+    ]               reduce using rule 18 (htal_stmt -> HTAL expression block .)
+    }               reduce using rule 18 (htal_stmt -> HTAL expression block .)
 
 
 state 63
@@ -1820,18 +1825,18 @@ state 64
 
 state 65
 
-    (13) if_stmt -> IF expression block ELSE . block
-    (14) if_stmt -> IF expression block ELSE . if_stmt
+    (13) ila_stmt -> ILA expression block MAKANTCH . block
+    (14) ila_stmt -> ILA expression block MAKANTCH . ila_stmt
     (20) block -> . { nl statement_list }
-    (12) if_stmt -> . IF expression block
-    (13) if_stmt -> . IF expression block ELSE block
-    (14) if_stmt -> . IF expression block ELSE if_stmt
+    (12) ila_stmt -> . ILA expression block
+    (13) ila_stmt -> . ILA expression block MAKANTCH block
+    (14) ila_stmt -> . ILA expression block MAKANTCH ila_stmt
 
     {               shift and go to state 48
-    IF              shift and go to state 12
+    ILA             shift and go to state 12
 
     block                          shift and go to state 71
-    if_stmt                        shift and go to state 72
+    ila_stmt                       shift and go to state 72
 
 state 66
 
@@ -1840,19 +1845,19 @@ state 66
     (3) statement_list -> . statement
     (4) statement_list -> . statement nl
     (5) statement_list -> . statement nl statement_list
-    (6) statement -> . if_stmt
-    (7) statement -> . for_stmt
-    (8) statement -> . foreach_stmt
-    (9) statement -> . while_stmt
-    (10) statement -> . until_stmt
+    (6) statement -> . ila_stmt
+    (7) statement -> . men_stmt
+    (8) statement -> . lkola_stmt
+    (9) statement -> . mahed_stmt
+    (10) statement -> . htal_stmt
     (11) statement -> . expression_stmt
-    (12) if_stmt -> . IF expression block
-    (13) if_stmt -> . IF expression block ELSE block
-    (14) if_stmt -> . IF expression block ELSE if_stmt
-    (15) for_stmt -> . FOR expression , expression , expression block
-    (16) foreach_stmt -> . id [ nl statement_list ]
-    (17) while_stmt -> . WHILE expression block
-    (18) until_stmt -> . UNTIL expression block
+    (12) ila_stmt -> . ILA expression block
+    (13) ila_stmt -> . ILA expression block MAKANTCH block
+    (14) ila_stmt -> . ILA expression block MAKANTCH ila_stmt
+    (15) men_stmt -> . MEN expression , expression , expression block
+    (16) lkola_stmt -> . id [ nl statement_list ]
+    (17) mahed_stmt -> . MAHED expression block
+    (18) htal_stmt -> . HTAL expression block
     (19) expression_stmt -> . expression
     (38) id -> . IDENTIFIER
     (39) id -> . IDENTIFIER . id
@@ -1867,32 +1872,32 @@ state 66
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (40) call -> . id ( )
     (41) call -> . id ( parameters )
 
     NEWLINE         shift and go to state 26
-    IF              shift and go to state 12
-    FOR             shift and go to state 14
-    WHILE           shift and go to state 16
-    UNTIL           shift and go to state 17
+    ILA             shift and go to state 12
+    MEN             shift and go to state 14
+    MAHED           shift and go to state 16
+    HTAL            shift and go to state 17
     IDENTIFIER      shift and go to state 18
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
 
     statement_list                 shift and go to state 73
     statement                      shift and go to state 4
-    if_stmt                        shift and go to state 6
-    for_stmt                       shift and go to state 7
-    foreach_stmt                   shift and go to state 8
-    while_stmt                     shift and go to state 9
-    until_stmt                     shift and go to state 10
+    ila_stmt                       shift and go to state 6
+    men_stmt                       shift and go to state 7
+    lkola_stmt                     shift and go to state 8
+    mahed_stmt                     shift and go to state 9
+    htal_stmt                      shift and go to state 10
     expression_stmt                shift and go to state 11
     expression                     shift and go to state 13
     id                             shift and go to state 15
@@ -1900,7 +1905,7 @@ state 66
 
 state 67
 
-    (15) for_stmt -> FOR expression , expression . , expression block
+    (15) men_stmt -> MEN expression , expression . , expression block
     (23) expression -> expression . OP_UNARY
     (25) expression -> expression . OP_MUL expression
     (26) expression -> expression . OP_ADD expression
@@ -1923,7 +1928,7 @@ state 67
 
 state 68
 
-    (16) foreach_stmt -> id [ nl statement_list . ]
+    (16) lkola_stmt -> id [ nl statement_list . ]
 
     ]               shift and go to state 75
 
@@ -1965,8 +1970,8 @@ state 70
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -1977,8 +1982,8 @@ state 70
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 60
@@ -1988,22 +1993,22 @@ state 70
 
 state 71
 
-    (13) if_stmt -> IF expression block ELSE block .
+    (13) ila_stmt -> ILA expression block MAKANTCH block .
 
-    NEWLINE         reduce using rule 13 (if_stmt -> IF expression block ELSE block .)
-    $end            reduce using rule 13 (if_stmt -> IF expression block ELSE block .)
-    ]               reduce using rule 13 (if_stmt -> IF expression block ELSE block .)
-    }               reduce using rule 13 (if_stmt -> IF expression block ELSE block .)
+    NEWLINE         reduce using rule 13 (ila_stmt -> ILA expression block MAKANTCH block .)
+    $end            reduce using rule 13 (ila_stmt -> ILA expression block MAKANTCH block .)
+    ]               reduce using rule 13 (ila_stmt -> ILA expression block MAKANTCH block .)
+    }               reduce using rule 13 (ila_stmt -> ILA expression block MAKANTCH block .)
 
 
 state 72
 
-    (14) if_stmt -> IF expression block ELSE if_stmt .
+    (14) ila_stmt -> ILA expression block MAKANTCH ila_stmt .
 
-    NEWLINE         reduce using rule 14 (if_stmt -> IF expression block ELSE if_stmt .)
-    $end            reduce using rule 14 (if_stmt -> IF expression block ELSE if_stmt .)
-    ]               reduce using rule 14 (if_stmt -> IF expression block ELSE if_stmt .)
-    }               reduce using rule 14 (if_stmt -> IF expression block ELSE if_stmt .)
+    NEWLINE         reduce using rule 14 (ila_stmt -> ILA expression block MAKANTCH ila_stmt .)
+    $end            reduce using rule 14 (ila_stmt -> ILA expression block MAKANTCH ila_stmt .)
+    ]               reduce using rule 14 (ila_stmt -> ILA expression block MAKANTCH ila_stmt .)
+    }               reduce using rule 14 (ila_stmt -> ILA expression block MAKANTCH ila_stmt .)
 
 
 state 73
@@ -2015,7 +2020,7 @@ state 73
 
 state 74
 
-    (15) for_stmt -> FOR expression , expression , . expression block
+    (15) men_stmt -> MEN expression , expression , . expression block
     (23) expression -> . expression OP_UNARY
     (24) expression -> . ! expression
     (25) expression -> . expression OP_MUL expression
@@ -2027,8 +2032,8 @@ state 74
     (31) expression -> . expression OP_ASSIGN expression
     (32) expression -> . ( expression )
     (33) expression -> . NUMBER
-    (34) expression -> . TRUE
-    (35) expression -> . FALSE
+    (34) expression -> . S7I7
+    (35) expression -> . KHAT2A
     (36) expression -> . id
     (37) expression -> . call
     (38) id -> . IDENTIFIER
@@ -2039,8 +2044,8 @@ state 74
     !               shift and go to state 19
     (               shift and go to state 20
     NUMBER          shift and go to state 21
-    TRUE            shift and go to state 22
-    FALSE           shift and go to state 23
+    S7I7            shift and go to state 22
+    KHAT2A          shift and go to state 23
     IDENTIFIER      shift and go to state 18
 
     expression                     shift and go to state 78
@@ -2049,12 +2054,12 @@ state 74
 
 state 75
 
-    (16) foreach_stmt -> id [ nl statement_list ] .
+    (16) lkola_stmt -> id [ nl statement_list ] .
 
-    NEWLINE         reduce using rule 16 (foreach_stmt -> id [ nl statement_list ] .)
-    $end            reduce using rule 16 (foreach_stmt -> id [ nl statement_list ] .)
-    ]               reduce using rule 16 (foreach_stmt -> id [ nl statement_list ] .)
-    }               reduce using rule 16 (foreach_stmt -> id [ nl statement_list ] .)
+    NEWLINE         reduce using rule 16 (lkola_stmt -> id [ nl statement_list ] .)
+    $end            reduce using rule 16 (lkola_stmt -> id [ nl statement_list ] .)
+    ]               reduce using rule 16 (lkola_stmt -> id [ nl statement_list ] .)
+    }               reduce using rule 16 (lkola_stmt -> id [ nl statement_list ] .)
 
 
 state 76
@@ -2068,7 +2073,7 @@ state 77
 
     (20) block -> { nl statement_list } .
 
-    ELSE            reduce using rule 20 (block -> { nl statement_list } .)
+    MAKANTCH        reduce using rule 20 (block -> { nl statement_list } .)
     NEWLINE         reduce using rule 20 (block -> { nl statement_list } .)
     $end            reduce using rule 20 (block -> { nl statement_list } .)
     ]               reduce using rule 20 (block -> { nl statement_list } .)
@@ -2077,7 +2082,7 @@ state 77
 
 state 78
 
-    (15) for_stmt -> FOR expression , expression , expression . block
+    (15) men_stmt -> MEN expression , expression , expression . block
     (23) expression -> expression . OP_UNARY
     (25) expression -> expression . OP_MUL expression
     (26) expression -> expression . OP_ADD expression
@@ -2102,10 +2107,10 @@ state 78
 
 state 79
 
-    (15) for_stmt -> FOR expression , expression , expression block .
+    (15) men_stmt -> MEN expression , expression , expression block .
 
-    NEWLINE         reduce using rule 15 (for_stmt -> FOR expression , expression , expression block .)
-    $end            reduce using rule 15 (for_stmt -> FOR expression , expression , expression block .)
-    ]               reduce using rule 15 (for_stmt -> FOR expression , expression , expression block .)
-    }               reduce using rule 15 (for_stmt -> FOR expression , expression , expression block .)
+    NEWLINE         reduce using rule 15 (men_stmt -> MEN expression , expression , expression block .)
+    $end            reduce using rule 15 (men_stmt -> MEN expression , expression , expression block .)
+    ]               reduce using rule 15 (men_stmt -> MEN expression , expression , expression block .)
+    }               reduce using rule 15 (men_stmt -> MEN expression , expression , expression block .)
 

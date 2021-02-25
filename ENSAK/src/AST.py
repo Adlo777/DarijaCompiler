@@ -36,8 +36,7 @@ class IfElseNode(Node):
     def run(self):
         if self.cond.run():
             self.if_block.run()
-        else:
-            if self.else_block:
+        elif self.else_block:
                 self.else_block.run()
                 
 # ******************************************************************************
@@ -71,7 +70,7 @@ class ForEachNode(Node):
         try:
             iter(collection)
         except:
-            raise InterpreterError("Loop error: '%s' is not a collection." % collection)
+            raise InterpreterError("kayn khata2 f la boucle:machi collection '%s' " % collection)
         for item in collection:
             currentStack.append(item)
             self.block.run()
@@ -89,6 +88,20 @@ class WhileNode(Node):
         while self.cond.run():
             self.block.run()
             
+            
+            
+# ******************************************************************************
+# PrintNode
+# ******************************************************************************
+class PrintNode(Node):
+    def __init__(self, cond, block):
+        self.cond = cond
+        self.block = block
+        
+    def run(self):
+        while self.cond.run():
+            self.block.run()
+                        
 # ******************************************************************************
 # UntilNode
 # ******************************************************************************
@@ -139,7 +152,7 @@ class OpNode(Node):
                     
     def __processObject(self, leftValue, rightValue):
         if type(rightValue) == float:
-            raise InterpreterError("Operation error: '%s' is not supported between an object and a float." % self.op)
+            raise InterpreterError("Had l'operation khat2a: '%s maymkench nderou object m3a 3adad 7a9i9i." % self.op)
         else:
             if isinstance(rightValue, Collection):
                 if self.op == '+' or self.op == '+=':
@@ -149,16 +162,16 @@ class OpNode(Node):
                     rightValue.remove(leftValue)
                     return rightValue
                 else:
-                    raise InterpreterError("Operation error: '%s' is not supported between an object and a list." % self.op)
+                    raise InterpreterError("Had l'operation khat2a: '%s maymkench nderou object m3a 3adad list." % self.op)
             else:
                 if self.op == '+':
                     return Collection([leftValue, rightValue])
                 else:
-                    raise InterpreterError("Operation error: '%s' is not supported between objects." % self.op)
+                    raise InterpreterError("Had l'operation khat2a: '%s maymkench nderou object ." % self.op)
                     
     def __processNumber(self, leftValue, rightValue):
         if rightValue and type(rightValue) != float:
-            raise InterpreterError("Operation error: '%s' is not supported between a float and an object." % self.op)
+            raise InterpreterError("Had l'operation khat2a: '%s maymkench nderou object m3a 3adad 7a9i9i." % self.op)
         else:
             if self.op == '*':
                 return leftValue * rightValue
@@ -166,12 +179,12 @@ class OpNode(Node):
                 try:
                     return leftValue / rightValue
                 except:
-                    raise InterpreterError("Operation error: division by 0.")
+                    raise InterpreterError("Had l'operation khat2a: 9issma 3la zero.")
             elif self.op == '%':
                 try:
                     return leftValue % rightValue
                 except:
-                    raise InterpreterError("Operation error: modulo 0.")
+                    raise InterpreterError("Had l'operation khat2a:9issma 3la zero.")#Operation error Dision /0
             elif self.op == '+':
                 return leftValue + rightValue
             elif self.op == '-':
@@ -190,12 +203,12 @@ class OpNode(Node):
                 try:
                     return self.left.assign(leftValue / rightValue)
                 except:
-                    raise InterpreterError("Operation error: division by 0.")
+                    raise InterpreterError("Had l'operation khat2a:9issma 3la zero.")
             elif self.op == '%=':
                 try:
                     return self.left.assign(leftValue % rightValue)
                 except:
-                    raise InterpreterError("Operation error: modulo 0.")
+                    raise InterpreterError("Had l'operation khat2a:lba9i zero..")
             elif self.op == '+=':
                 return self.left.assign(leftValue + rightValue)
             elif self.op == '-=':
@@ -205,11 +218,11 @@ class OpNode(Node):
             elif self.op == '--':
                 return self.left.assign(leftValue - 1)
             else:
-                raise InterpreterError("Operation error: '%s' is not supported between floats." % self.op)
+                raise InterpreterError("Had l'operation khat2a: '%s maymkench nderou object m3a 3adad 7a9i9i." % self.op)
                 
     def __processList(self, leftValue, rightValue):
         if type(rightValue) == float:
-            raise InterpreterError("Operation error: '%s' is not supported between a list and a float." % self.op)
+            raise InterpreterError("Had l'operation khat2a: '%s maymkench nderou object m3a 3adad list." % self.op)
         else:
             if isinstance(rightValue, Collection):
                 if self.op == '+' or self.op == '+=':
@@ -219,13 +232,13 @@ class OpNode(Node):
                     leftValue.removeList(rightValue)
                     return leftValue
                 else:
-                    raise InterpreterError("Operation error: '%s' is not supported between lists." % self.op)
+                    raise InterpreterError("Had l'operation khat2a: '%s maymkench nderou lists." % self.op)
             else:
                 if self.op == '+':
                     leftValue.add(rightValue)
                     return leftValue
                 else:
-                    raise InterpreterError("Operation error: '%s' is not supported between a list and an object." % self.op)
+                    raise InterpreterError("Had l'operation khat2a: '%s maymkench nderou object m3a 3adad list."  % self.op)
                     
     def __autoCast(self, value):
         if type(value) == bool:
@@ -252,14 +265,14 @@ class CallNode(Node):
                     p.append(param.run())
             try:
                 return function(*p)
-            except 'Interpretation Error' as e:
+            except 'kayn khata2 f Interpretation' as e:
                 raise e
-            except 'Exception error' as e:
+            except 'Kayn khata2 f Exception' as e:
                 raise e
-                raise InterpreterError("Function error: '%s' call failed." % str(function))
+                raise InterpreterError("kayn khata2 f la fonction." % str(function))
         else:
             # This id doesn't return a callable function
-            raise InterpreterError("Function error: '%s' is not a callable function." % str(function))
+            raise InterpreterError("kayn khata2 f la fonction." % str(function))
             
 # ******************************************************************************
 # IdentifierNode
@@ -290,7 +303,7 @@ class IdentifierNode(Node):
         else:
             if self.subids:
                 # If toto doesn't exist, cannot search for toto.titi.
-                raise InterpreterError("Identification error: '%s' doesn't exist so cannot search subids." % idValue)
+                raise InterpreterError("Identification khat2a : makaynach." % idValue)
             else:
                 # Assume that this identifier will be assigned later
                 return None
@@ -307,7 +320,7 @@ class IdentifierNode(Node):
                     return self.subids.assign(value, currentStack[-1])
                 else:
                     # Current cannot be changed because it's managed automatically for 'foreach' loops.
-                    raise InterpreterError("Assignment error: 'current' cannot be assign.")
+                    raise InterpreterError("Assignment khat2a : '%s' maymkench n7ededouh ." % idValue)
             path = world
         if hasattr(path, idValue):
             if self.subids:
@@ -318,7 +331,7 @@ class IdentifierNode(Node):
         else:
             if self.subids:
                 # If toto doesn't exist, cannot assign toto.titi.
-                raise InterpreterError("Assignment error: '%s' doesn't exist so cannot search subids." % idValue)
+                raise InterpreterError("Assignment khat2a : '%s' maymkench n7ededouh ." % idValue)
             else:
                 setattr(path, idValue, value)
                 return getattr(path, idValue)
@@ -334,4 +347,4 @@ class TokenNode(Node):
         return self.token
         
     def assign(self, value, root = None):
-        raise InterpreterError("Assignment error: '%s' isn't a variable." % self.token)
+        raise InterpreterError("Assignment khat2a : '%s' machi variable." % self.token)

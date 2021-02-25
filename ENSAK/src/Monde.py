@@ -96,7 +96,7 @@ class RGB:
             self.__g = int(g) % 256
             self.__b = int(b) % 256
         except:
-            raise InterpreterError('The three parameters of rgb must be integers. Usage: rgb(r, g, b)')
+            raise InterpreterError('rgb khat2a')
             
     def getR(self):
         return self.__r
@@ -105,7 +105,7 @@ class RGB:
         try:
             self.__r = int(r) % 256
         except:
-            raise InterpreterError('The parameter of setR must be an integer. Usage: setR(r)')
+            raise InterpreterError('7eded khat2a')
             
     def getG(self):
         return self.__g
@@ -354,7 +354,7 @@ class Truck(WorldObject):
 # ******************************************************************************
 class Simulator:
     def __init__(self, width, height):
-        pygame.display.set_caption('Trucky')
+        pygame.display.set_caption('DarijaCompiler')
         self.__screen = pygame.display.set_mode([int(width * 30), int(height * 30)])
         self.__car = []
         self.__truck = []

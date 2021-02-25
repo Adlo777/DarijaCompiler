@@ -1,15 +1,15 @@
 # =======================================
-# World Race -- Darija Compiler
+# Sample Survivor -- Darija Compiler
 # =======================================
 
 # Initialise le monde
 init(15, 15, rgb(255, 0, 0))
 
 # Crée 50 véhicules placés aléatoirement
-for i = 0, i < 50, i++ {
-    if rand() < 0.5 {
+men i = 0, i < 50, i++ {
+    ila rand() < 0.5 {
         truck(rand(0, getNbX() - 1), rand(0, getNbY() - 1))
-    } else {
+    } makantch {
         car(rand(0, getNbX() - 1), rand(0, getNbY() - 1))
     }
 }
@@ -23,59 +23,59 @@ cars [
 ]
 
 # Fait avancer les véhicules
-survivor = true
-while survivor {
-    survivor = false
+survivor = s7i7
+mahed survivor {
+    survivor = khat2a
     # Pour chaque véhicule ...
     all [
         # S'il a encore de la vive, part au combat
-        if current.life > 0 {
+        ila current.life > 0 {
             # Recherche des ennemis à proximité
             front = current.pickForward()
             back = current.pickBackward()
             # S'il y en a devant ou derrière, attaque
-            if front.count() > 0 {
+            ila front.count() > 0 {
                 current.forward()
-            } else if back.count() > 0 {
+            } makantch ila back.count() > 0 {
                 current.backward()
             # Sinon, bouge
-            } else {
+            } makantch {
                 action = rand(0, 4)
-                if action <= 1 {
+                ila action <= 1 {
                     current.backward()
-                } else if action >= 3 {
+                } makantch ila action >= 3 {
                     current.forward()
-                } else {
+                } makantch {
                     current.turn()
                 }
             }
             # Gestion des bords
-            if current.getX() >= getNbX() {
+            ila current.getX() >= getNbX() {
                 current.setX(current.getX() - getNbX())
             }
-            if current.getX() < 0 {
+            ila current.getX() < 0 {
                 current.setX(getNbX() - (current.getX() + 2))
             }
-            if current.getY() >= getNbY() {
+            ila current.getY() >= getNbY() {
                 current.setY(current.getY() - getNbY())
             }
-            if current.getY() < 0 {
+            ila current.getY() < 0 {
                 current.setY(getNbY() - (current.getY() + 2))
             }
             # Inflige des dommages lors d'une collision
-            if current.isTruck() {
+            ila current.isTruck() {
                 damage = 2
-            } else {
+            } makantch {
                 damage = 1
             }
             over = current.pickOver()
             over [
                 current.life -= damage
-                if current.life <= 0 {
+                ila current.life <= 0 {
                     remove(current)
                 }
             ]
-            survivor = true
+            survivor = s7i7
             paint(0.1)
         }
     ]
